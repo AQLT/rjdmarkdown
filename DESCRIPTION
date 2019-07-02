@@ -1,0 +1,20 @@
+Package: rjdmarkdown
+Type: Package
+Title: 'rmarkdown' and 'RJDemetra'
+Version: 0.1.0
+Authors@R: c(
+  person("Alain", "Quartier-la-Tente", role = c("aut", "cre"),
+                 email = "alain.quartier@yahoo.fr"))
+Description: Set of tools to manipualte the 'JDemetra+' workspaces.
+Depends:
+    R (>= 3.1.1)
+Imports:
+    RJDemetra,
+    knitr,
+    kableExtra
+License: EUPL
+URL: https://github.com/AQLT/rjdworkspace
+LazyData: TRUE
+BugReports: https://github.com/AQLT/rjdworkspace/issues
+Encoding: UTF-8
+RoxygenNote: 6.1.1
