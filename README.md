@@ -25,21 +25,17 @@ devtools::install_github("AQLT/rjdmarkdown")
 
 ## Usage
 
-For the moment the only function developped is `print_latex()` for
-regarima models. You can try it creating a new rmarkdown file with the
-option:
+For the moment the only function developped is `print_regarima()` for
+regarima models for \(\LaTeX\) outputs (`format = "latex"`, the package
+booktabs and float must be used) and HTML outputs (`format = "html"`).
 
-``` eval
-header-includes:
-   - \usepackage{booktabs}
-   - \usepackage{float}
-```
-
-And the following example with the chunk option `results='asis'`:
+The option `results='asis'` must be used in the chunk:
 
 ``` r
 library(RJDemetra)
 library(rjdmarkdown)
 myreg <- regarima_x13(ipi_c_eu[, "FR"])
-print_latex(myreg)
+print_regarima(myreg, format = "latex")
+# or
+print_regarima(myreg, format = "html")
 ```
