@@ -11,6 +11,10 @@ print_latex.regarima <- function(x, ...){
   NextMethod("print_latex", x)
 }
 #' @export
+#' @importFrom knitr kable
+#' @importFrom kableExtra kable_styling footnote
+#' @importFrom magrittr %>%
+#' @importFrom stats time
 print_latex.X13 <- function(x, digits = 3, decimal.mark = getOption("OutDec"),
                             booktabs = TRUE, ...){
   summary_x <- summary(x)
@@ -92,21 +96,23 @@ print_latex.X13 <- function(x, digits = 3, decimal.mark = getOption("OutDec"),
   ## ARIMA bloc ##
   options(knitr.kable.NA = '')
   cat("\\underline{\\textbf{ARIMA model}}\n\n")
-  cat(sprintf("ARIMA (%s)(%s)\n",
-              paste(summary_x$arma_orders[c("p", "d", "q")],collapse = ","),
-              paste(summary_x$arma_orders[c("bp", "bd", "bq")],collapse = ","))
-  )
+  arima_model <- sprintf("ARIMA (%s)(%s)",
+                         paste(summary_x$arma_orders[c("p", "d", "q")],collapse = ","),
+                         paste(summary_x$arma_orders[c("bp", "bd", "bq")],collapse = ","))
   arima_coef <- format_table_coefficient(summary_x$coefficients$arima,
                                          format = "latex")
   if(!is.null(arima_coef)){
-    cat(kableExtra::kable_styling(knitr::kable(arima_coef, format = "latex", digits = digits,
-              escape = "FALSE",
-              caption = "ARIMA coefficients",
-              format.args = list(decimal.mark = decimal.mark),
-              booktabs = booktabs,
-              align = "c"),
-              latex_options = "HOLD_position")
-        )
+    table <- kable(arima_coef, format = "latex", digits = digits,
+                         escape = FALSE,
+                         caption = "ARIMA coefficients",
+                         format.args = list(decimal.mark = decimal.mark),
+                         booktabs = booktabs,
+                         align = "c") %>% 
+      kable_styling(latex_options = "HOLD_position") %>% 
+      footnote(general = arima_model,general_title = "")
+    cat(table)
+  }else{
+    cat(arima_coef)
   }
   cat("\n\n")
   ## End ARIMA bloc ##
@@ -123,15 +129,15 @@ print_latex.X13 <- function(x, digits = 3, decimal.mark = getOption("OutDec"),
                               format_table_coefficient(summary_x$coefficients$fixed_var)
                               )
     if(!is.null(regression_table)){
-      
-      cat(kableExtra::kable_styling(knitr::kable(regression_table, format = "latex", digits = digits,
-                escape = "FALSE",
-                caption = "ARIMA coefficients",
-                format.args = list(decimal.mark = decimal.mark),
-                booktab = TRUE,
-                align = "c"),
-                        latex_options = "HOLD_position")
-          )
+      table <- kable(regression_table, format = "latex", digits = digits,
+                     escape = "FALSE",
+                     caption = "Regression coefficientss",
+                     format.args = list(decimal.mark = decimal.mark),
+                     booktab = TRUE,
+                     align = "c") %>% 
+        kable_styling(latex_options = "HOLD_position") %>% 
+        footnote(general = arima_model,general_title = "")
+      cat(table)
     }
     cat("\n")
     
