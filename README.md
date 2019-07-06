@@ -25,8 +25,12 @@ devtools::install_github("AQLT/rjdmarkdown")
 
 ## Usage
 
-For the moment the only function developped is `print_regarima()` for
-regarima models for \(\LaTeX\) outputs (`format = "latex"`, the package
+For the moment the only functions developped are:
+
+  - `print_preprocessing()` for the pre-processing model;  
+  - `print_decomposition()` for the decomposition.
+
+The available outputs are LaTeX (`format = "latex"`, the package
 booktabs and float must be used) and HTML outputs (`format = "html"`).
 
 The option `results='asis'` must be used in the chunk:
@@ -34,8 +38,7 @@ The option `results='asis'` must be used in the chunk:
 ``` r
 library(RJDemetra)
 library(rjdmarkdown)
-myreg <- regarima_x13(ipi_c_eu[, "FR"])
-print_regarima(myreg, format = "latex")
-# or
-print_regarima(myreg, format = "html")
+mysa <- x13(ipi_c_eu[, "FR"])
+print_preprocessing(mysa, format = "latex")
+print_decomposition(mysa, format = "latex")
 ```
