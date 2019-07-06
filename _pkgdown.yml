@@ -23,6 +23,8 @@ navbar:
       menu:
       - text: rjdmarkdown with HTML output
         href: articles/rjdmarkdown-html.html
+      - text: rjdmarkdown with PDF output
+        href: articles/rjdmarkdown-pdf.pdf
     jdemetra:
       text: JDemetra+
       menu:

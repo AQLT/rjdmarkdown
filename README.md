@@ -30,8 +30,11 @@ For the moment the only functions developped are:
   - `print_preprocessing()` for the pre-processing model;  
   - `print_decomposition()` for the decomposition.
 
-The available outputs are LaTeX (`format = "latex"`, the package
-booktabs and float must be used) and HTML outputs (`format = "html"`).
+The available outputs are
+[LaTeX](https://aqlt.github.io/rjdmarkdown/articles/rjdmarkdown-pdf.pdf)
+(`format = "latex"`, the package booktabs and float must be used) and
+[HTML](https://aqlt.github.io/rjdmarkdown/articles/rjdmarkdown-html.html)
+outputs (`format = "html"`).
 
 The option `results='asis'` must be used in the chunk:
 
@@ -42,3 +45,5 @@ mysa <- x13(ipi_c_eu[, "FR"])
 print_preprocessing(mysa, format = "latex")
 print_decomposition(mysa, format = "latex")
 ```
+
+See
