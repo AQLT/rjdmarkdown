@@ -5,7 +5,8 @@ Version: 0.1.0
 Authors@R: c(
   person("Alain", "Quartier-la-Tente", role = c("aut", "cre"),
                  email = "alain.quartier@yahoo.fr"))
-Description: Set of tools to manipualte the 'JDemetra+' workspaces.
+Description: Functions to have nice 'rmarkdown' outputs of the 
+  seasonal adjustment models made by 'RJDemetra'.
 Depends:
     R (>= 3.1.1)
 Imports:
@@ -14,8 +15,8 @@ Imports:
     kableExtra,
     magrittr
 License: EUPL
-URL: https://github.com/AQLT/rjdworkspace
+URL: https://github.com/AQLT/rjdmarkdown
 LazyData: TRUE
-BugReports: https://github.com/AQLT/rjdworkspace/issues
+BugReports: https://github.com/AQLT/rjdmarkdown/issues
 Encoding: UTF-8
 RoxygenNote: 6.1.1
