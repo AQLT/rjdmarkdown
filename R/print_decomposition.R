@@ -71,6 +71,7 @@ print_decomposition.decomposition_X11 <- function(x, format = "latex",
                    caption = "M-statistics",
                    format.args = list(decimal.mark = decimal.mark),
                    align = c("c", "l")) %>% 
+      column_spec(1, width_min = "1cm") %>% 
       kable_styling() %>% 
       footnote(general = filters, general_title = "", escape = FALSE)
     cat(table)

@@ -1,0 +1,47 @@
+---
+title: "rjdmarkdown with HTML output"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{rjdmarkdown with HTML output}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(rjdmarkdown)
+```
+
+For the moment the only functions developped are:
+
+- `print_preprocessing()` for the pre-processing model;  
+- `print_decomposition()` for the decomposition.
+
+The result is different between X-13ARIMA and TRAMO-SEATS models.
+
+```{r}
+library(RJDemetra)
+sa_x13 <- x13(ipi_c_eu[, "FR"])
+sa_ts <-tramoseats(ipi_c_eu[, "FR"])
+```
+
+# X-13-ARIMA model
+
+```{r, results='asis'}
+print_preprocessing(sa_x13, format = "html")
+print_decomposition(sa_x13, format = "html")
+```
+
+# TRAMO-SEATS model
+
+```{r, results='asis'}
+print_preprocessing(sa_ts, format = "html")
+print_decomposition(sa_ts, format = "html")
+```
+

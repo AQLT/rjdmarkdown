@@ -20,3 +20,6 @@ LazyData: TRUE
 BugReports: https://github.com/AQLT/rjdmarkdown/issues
 Encoding: UTF-8
 RoxygenNote: 6.1.1
+VignetteBuilder: knitr
+Suggests: 
+    rmarkdown

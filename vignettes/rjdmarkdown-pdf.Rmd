@@ -1,0 +1,61 @@
+---
+title: "rjdmarkdown with PDF output"
+output: pdf_document
+header-includes:
+   - \usepackage{booktabs}
+   - \usepackage{float}
+   - \usepackage{array}
+   - \usepackage{multirow}
+vignette: >
+  %\VignetteIndexEntry{rjdmarkdown with PDF output}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(rjdmarkdown)
+```
+
+
+For the moment the only functions developped are:
+
+- `print_preprocessing()` for the pre-processing model;  
+- `print_decomposition()` for the decomposition.
+
+The result is different between X-13ARIMA and TRAMO-SEATS models.
+
+For PDF outputs, the package booktabs and float must be used.
+
+```{r, eval = FALSE}
+header-includes:
+   - \usepackage{booktabs}
+   - \usepackage{float}
+```
+
+
+```{r}
+library(RJDemetra)
+sa_x13 <- x13(ipi_c_eu[, "FR"])
+sa_ts <-tramoseats(ipi_c_eu[, "FR"])
+```
+
+# X-13-ARIMA model
+
+```{r, results='asis'}
+print_preprocessing(sa_x13, format = "latex")
+print_decomposition(sa_x13, format = "latex")
+```
+
+# TRAMO-SEATS model
+
+```{r, results='asis'}
+print_preprocessing(sa_ts, format = "latex")
+print_decomposition(sa_ts, format = "latex")
+```
