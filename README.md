@@ -45,5 +45,3 @@ mysa <- x13(ipi_c_eu[, "FR"])
 print_preprocessing(mysa, format = "latex")
 print_decomposition(mysa, format = "latex")
 ```
-
-See
