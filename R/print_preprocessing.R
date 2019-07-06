@@ -1,7 +1,7 @@
-#' Print the RegArima model
+#' Print the pre-processing model
 #' 
 #' @param x the object to print.
-#' @param format output format: only \code{"latex"} is available.
+#' @param format output format: \code{"latex"} or \code{"html"}.
 #' @param digits number of digits after the decimal point.
 #' @param decimal.mark the character to be used to indicate the numeric decimal point.
 #' @param booktabs boolean indicating whether to use or not the booktabs package (when \code{format = "latex"}).
@@ -16,27 +16,38 @@
 #' @importFrom kableExtra kable_styling footnote
 #' @importFrom magrittr %>%
 #' @importFrom stats time
-print_regarima <- function(x, format = "latex",
+print_preprocessing <- function(x, format = "latex",
                            digits = 3, decimal.mark = getOption("OutDec"),
                            booktabs = TRUE,
                            summary = TRUE,
                            likelihood = TRUE,
                            arima = TRUE,
                            regression = TRUE, ...){
-  UseMethod("print_regarima", x)
+  UseMethod("print_preprocessing", x)
 }
 #' @export
-print_regarima.SA <- function(x, format = "latex",
+print_preprocessing.SA <- function(x, format = "latex",
                               digits = 3, decimal.mark = getOption("OutDec"),
                               booktabs = TRUE,
                               summary = TRUE,
                               likelihood = TRUE,
                               arima = TRUE,
                               regression = TRUE, ...){
-  NextMethod("print_regarima", x$regarima)
+  if(identical(format, "latex")){
+    print_preprocessing_latex(x$regarima, digits = digits, decimal.mark = decimal.mark,
+                              booktabs = booktabs, summary = summary,
+                              likelihood = likelihood,
+                              arima = arima, regression = regression, ...)
+  }
+  if(identical(format, "html")){
+    print_preprocessing_html(x$regarima, digits = digits, decimal.mark = decimal.mark,
+                             summary = summary,
+                             likelihood = likelihood,
+                             arima = arima, regression = regression, ...)
+  }
 }
 #' @export
-print_regarima.regarima <- function(x, format = "latex",
+print_preprocessing.regarima <- function(x, format = "latex",
                                     digits = 3, decimal.mark = getOption("OutDec"),
                                     booktabs = TRUE,
                                     summary = TRUE,
@@ -44,20 +55,20 @@ print_regarima.regarima <- function(x, format = "latex",
                                     arima = TRUE,
                                     regression = TRUE, ...){
   if(identical(format, "latex")){
-    print_regarima_latex(x, digits = digits, decimal.mark = decimal.mark,
+    print_preprocessing_latex(x, digits = digits, decimal.mark = decimal.mark,
                          booktabs = booktabs, summary = summary,
                          likelihood = likelihood,
                          arima = arima, regression = regression, ...)
   }
   if(identical(format, "html")){
-    print_regarima_html(x, digits = digits, decimal.mark = decimal.mark,
+    print_preprocessing_html(x, digits = digits, decimal.mark = decimal.mark,
                         summary = summary,
                         likelihood = likelihood,
                         arima = arima, regression = regression, ...)
   }
 }
 
-print_regarima_latex <- function(x, digits = 3, decimal.mark = getOption("OutDec"),
+print_preprocessing_latex <- function(x, digits = 3, decimal.mark = getOption("OutDec"),
                             booktabs = TRUE,
                             summary = TRUE,
                             likelihood = TRUE,
@@ -75,7 +86,7 @@ print_regarima_latex <- function(x, digits = 3, decimal.mark = getOption("OutDec
   ##################
   ## summary bloc ##
   if(summary){
-    cat("\\underline{\\textbf{Summary}}")
+    cat(title("Summary", format = "latex"))
     cat("\n\n")
     est_span <- summary_x$results_spec[1,"T.span"]
     cat("\n\n")
@@ -83,6 +94,10 @@ print_regarima_latex <- function(x, digits = 3, decimal.mark = getOption("OutDec
     nobs <- length(time(x$model$effects))
     cat(nobs, "observations")
     cat("\n\n")
+    
+    if(summary_x$results_spec[,"Log transformation"]){
+      cat("Series has been log-transformed\n\n")
+    }
     
     nb_td_var <- summary_x$results_spec[1,"Trading days"]
     if(nb_td_var != 0) {
@@ -119,7 +134,9 @@ print_regarima_latex <- function(x, digits = 3, decimal.mark = getOption("OutDec
   #####################
   ## Likelihood bloc ##
   if(likelihood){
-    cat("\\underline{\\textbf{Likelihood statistics}}\n\n")
+    cat(title("Likelihood statistics", format = "latex"))
+    cat("\n\n")
+    
     cat(sprintf("Number of effective observations = %s\n\n", x$loglik["neffectiveobs",]))
     cat(sprintf("Number of estimated parameters = %s\n\n", x$loglik["np",]))
     
@@ -144,7 +161,8 @@ print_regarima_latex <- function(x, digits = 3, decimal.mark = getOption("OutDec
   ## ARIMA bloc ##
   
   if(arima){
-    cat("\\underline{\\textbf{ARIMA model}}\n\n")
+    cat(title("ARIMA model", format = "latex"))
+    cat("\n\n")
     arima_model <- sprintf("ARIMA (%s)(%s)",
                            paste(summary_x$arma_orders[c("p", "d", "q")],collapse = ","),
                            paste(summary_x$arma_orders[c("bp", "bd", "bq")],collapse = ","))
@@ -174,8 +192,9 @@ print_regarima_latex <- function(x, digits = 3, decimal.mark = getOption("OutDec
   if(regression){
     if(!all(sapply(summary_x$coefficients[c("regression", "fixed_out", "fixed_var")], 
                    is.null))){
-      cat("\\underline{\\textbf{Regression model}}\n\n")
-      
+      cat(title("Regression model", format = "latex"))
+      cat("\n\n")
+
       regression_table <- rbind(format_table_coefficient(summary_x$coefficients$regression, format = "latex"),
                                 format_table_coefficient(summary_x$coefficients$fixed_out, format = "latex"),
                                 format_table_coefficient(summary_x$coefficients$fixed_var, format = "latex")
@@ -185,7 +204,7 @@ print_regarima_latex <- function(x, digits = 3, decimal.mark = getOption("OutDec
                        escape = "FALSE",
                        caption = "Regression coefficientss",
                        format.args = list(decimal.mark = decimal.mark),
-                       booktab = booktab,
+                       booktabs = booktabs,
                        align = "c") %>% 
           kable_styling(latex_options = "HOLD_position") %>% 
           footnote(general = arima_model,general_title = "")
@@ -196,7 +215,7 @@ print_regarima_latex <- function(x, digits = 3, decimal.mark = getOption("OutDec
   cat("\n\n")
   return(invisible(x))
 }
-print_regarima_html <- function(x, digits = 3, decimal.mark = getOption("OutDec"),
+print_preprocessing_html <- function(x, digits = 3, decimal.mark = getOption("OutDec"),
                                  booktabs = TRUE,
                                  summary = TRUE,
                                  likelihood = TRUE,
@@ -214,7 +233,7 @@ print_regarima_html <- function(x, digits = 3, decimal.mark = getOption("OutDec"
   ##################
   ## summary bloc ##
   if(summary){
-    cat("<u><b>Summary</b> </u>")
+    cat(title("Summary", format = "html"))
     cat("\n\n")
     est_span <- summary_x$results_spec[1,"T.span"]
     cat("\n\n")
@@ -222,6 +241,10 @@ print_regarima_html <- function(x, digits = 3, decimal.mark = getOption("OutDec"
     nobs <- length(time(x$model$effects))
     cat(nobs, "observations")
     cat("\n\n")
+    
+    if(summary_x$results_spec[,"Log transformation"]){
+      cat("Series has been log-transformed\n\n")
+    }
     
     nb_td_var <- summary_x$results_spec[1,"Trading days"]
     if(nb_td_var != 0) {
@@ -258,7 +281,8 @@ print_regarima_html <- function(x, digits = 3, decimal.mark = getOption("OutDec"
   #####################
   ## Likelihood bloc ##
   if(likelihood){
-    cat("<u><b>Likelihood statistics</b> </u>\n\n")
+    cat(title("Likelihood statistics", format = "html"))
+    cat("\n\n")
     
     cat(sprintf("Number of effective observations = %s\n\n", x$loglik["neffectiveobs",]))
     cat(sprintf("Number of estimated parameters = %s\n\n", x$loglik["np",]))
@@ -284,7 +308,8 @@ print_regarima_html <- function(x, digits = 3, decimal.mark = getOption("OutDec"
   ## ARIMA bloc ##
   
   if(arima){
-    cat("<u><b>ARIMA model</b> </u>\n\n")
+    cat(title("ARIMA model", format = "html"))
+    cat("\n\n")
     arima_model <- sprintf("ARIMA (%s)(%s)",
                            paste(summary_x$arma_orders[c("p", "d", "q")],collapse = ","),
                            paste(summary_x$arma_orders[c("bp", "bd", "bq")],collapse = ","))
@@ -313,7 +338,8 @@ print_regarima_html <- function(x, digits = 3, decimal.mark = getOption("OutDec"
   if(regression){
     if(!all(sapply(summary_x$coefficients[c("regression", "fixed_out", "fixed_var")], 
                    is.null))){
-      cat("<u><b>Regression model</b> </u>\n\n")
+      cat(title("Regression model", format = "html"))
+      cat("\n\n")
       
       regression_table <- rbind(format_table_coefficient(summary_x$coefficients$regression, format = "html"),
                                 format_table_coefficient(summary_x$coefficients$fixed_out, format = "html"),
