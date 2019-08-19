@@ -5,20 +5,24 @@
 #' @importFrom kableExtra column_spec
 #' @export
 print_decomposition <- function(x, format = "latex",
+                                plot = TRUE,
                                 digits = 3, decimal.mark = getOption("OutDec"),
                                 booktabs = TRUE, ...){
   UseMethod("print_decomposition", x)
 }
 #' @export
 print_decomposition.SA <- function(x, format = "latex",
+                                   plot = TRUE,
                                    digits = 3, decimal.mark = getOption("OutDec"),
                                    booktabs = TRUE, ...){
   print_decomposition(x$decomposition, format = format,
+                      plot = plot,
                       digits = digits, decimal.mark = decimal.mark,
                       booktabs = booktabs, ...)
 }
 #' @export
 print_decomposition.decomposition_X11 <- function(x, format = "latex",
+                                                  plot = TRUE,
                                          digits = 3, decimal.mark = getOption("OutDec"),
                                          booktabs = TRUE, ...){
 
@@ -49,7 +53,17 @@ print_decomposition.decomposition_X11 <- function(x, format = "latex",
   cat("\n\n")
   cat(sprintf("Mode: %s", tolower(x$mode)))
   cat("\n\n")
-  if(identical(format, "latex")){
+  
+  if (plot) {
+    plot(x, ...)
+    cat("\n\n")
+  }
+  # if (plot) {
+  #   cat(sprintf("plot(x, main = %s)",plot.title))
+  #   cat("\n\n")
+  # }
+  
+  if (identical(format, "latex")) {
     filters <- sprintf("\\\\textbf{Final filters}: M%s, Henderson-%s terms",
                        x$s_filter, gsub("\\D","",x$t_filter))
     table <- kable(m_stats, format = "latex", digits = digits,
@@ -79,6 +93,7 @@ print_decomposition.decomposition_X11 <- function(x, format = "latex",
 }
 #' @export
 print_decomposition.decomposition_SEATS <- function(x, format = "latex",
+                                                    plot = TRUE, 
                                                   digits = 2,
                                                   decimal.mark = getOption("OutDec"),
                                                   booktabs = TRUE, ...){
@@ -88,6 +103,11 @@ print_decomposition.decomposition_SEATS <- function(x, format = "latex",
   cat("\n\n")
   cat(sprintf("Mode: %s", tolower(x$mode)))
   cat("\n\n")
+  
+  if (plot) {
+    plot(x, ...)
+    cat("\n\n")
+  }
   
   var <- x$model
   var_names <- bold(c("Model","SA","Trend","Seasonal","Transitory","Irregular"),

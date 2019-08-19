@@ -10,15 +10,12 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>", out.width = "100%",
+  fig.dim = c(8, 5), dpi = 300
 )
 ```
 
-```{r setup}
-library(rjdmarkdown)
-```
-
-For the moment the only functions developped are:
+The functions developped in `rjdmarkdown` are:
 
 - `print_preprocessing()` for the pre-processing model;  
 - `print_decomposition()` for the decomposition.
@@ -26,22 +23,36 @@ For the moment the only functions developped are:
 The result is different between X-13ARIMA and TRAMO-SEATS models.
 
 ```{r}
+library(rjdmarkdown)
 library(RJDemetra)
 sa_x13 <- x13(ipi_c_eu[, "FR"])
-sa_ts <-tramoseats(ipi_c_eu[, "FR"])
+sa_ts <- tramoseats(ipi_c_eu[, "FR"])
 ```
 
 # X-13-ARIMA model
 
 ```{r, results='asis'}
 print_preprocessing(sa_x13, format = "html")
-print_decomposition(sa_x13, format = "html")
+print_decomposition(sa_x13, format = "html", caption = NULL)
 ```
 
 # TRAMO-SEATS model
 
 ```{r, results='asis'}
 print_preprocessing(sa_ts, format = "html")
-print_decomposition(sa_ts, format = "html")
+print_decomposition(sa_ts, format = "html", caption = NULL)
 ```
 
+
+# Reproductibility
+To produce this document, the `knitr` options were set as followed:
+
+```{r, include = TRUE, eval = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>", out.width = "100%",
+  fig.dim = c(7, 5)
+)
+```
+
+And the options `results='asis', fig.cap = "S-I Ratio"` were used in the chunks.

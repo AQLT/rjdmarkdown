@@ -206,8 +206,7 @@ print_preprocessing_latex <- function(x, digits = 3, decimal.mark = getOption("O
                        format.args = list(decimal.mark = decimal.mark),
                        booktabs = booktabs,
                        align = "c") %>% 
-          kable_styling(latex_options = "HOLD_position") %>% 
-          footnote(general = arima_model,general_title = "")
+          kable_styling(latex_options = "HOLD_position")
         cat(table)
       }
     }
