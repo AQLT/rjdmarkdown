@@ -4,8 +4,8 @@
 \alias{print_preprocessing}
 \title{Print the pre-processing model}
 \usage{
-print_preprocessing(x, format = "latex", digits = 3,
-  decimal.mark = getOption("OutDec"), booktabs = TRUE,
+print_preprocessing(x, format = "latex", signif.stars = TRUE,
+  digits = 3, decimal.mark = getOption("OutDec"), booktabs = TRUE,
   summary = TRUE, likelihood = TRUE, arima = TRUE,
   regression = TRUE, ...)
 }
@@ -13,6 +13,8 @@ print_preprocessing(x, format = "latex", digits = 3,
 \item{x}{the object to print.}
 
 \item{format}{output format: \code{"latex"} or \code{"html"}.}
+
+\item{signif.stars}{logical; if \code{TRUE}, p-values are additionally encoded visually as ‘significance stars’ in order to help scanning of long coefficient tables}
 
 \item{digits}{number of digits after the decimal point.}
 

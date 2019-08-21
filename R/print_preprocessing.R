@@ -2,6 +2,7 @@
 #' 
 #' @param x the object to print.
 #' @param format output format: \code{"latex"} or \code{"html"}.
+#' @param signif.stars logical; if \code{TRUE}, p-values are additionally encoded visually as ‘significance stars’ in order to help scanning of long coefficient tables
 #' @param digits number of digits after the decimal point.
 #' @param decimal.mark the character to be used to indicate the numeric decimal point.
 #' @param booktabs boolean indicating whether to use or not the booktabs package (when \code{format = "latex"}).
@@ -15,8 +16,10 @@
 #' @importFrom knitr kable
 #' @importFrom kableExtra kable_styling footnote
 #' @importFrom magrittr %>%
-#' @importFrom stats time
+#' @importFrom stats time printCoefmat
+#' @importFrom graphics plot
 print_preprocessing <- function(x, format = "latex",
+                                signif.stars = TRUE,
                            digits = 3, decimal.mark = getOption("OutDec"),
                            booktabs = TRUE,
                            summary = TRUE,
@@ -27,6 +30,7 @@ print_preprocessing <- function(x, format = "latex",
 }
 #' @export
 print_preprocessing.SA <- function(x, format = "latex",
+                                   signif.stars = TRUE,
                               digits = 3, decimal.mark = getOption("OutDec"),
                               booktabs = TRUE,
                               summary = TRUE,
@@ -34,13 +38,15 @@ print_preprocessing.SA <- function(x, format = "latex",
                               arima = TRUE,
                               regression = TRUE, ...){
   if(identical(format, "latex")){
-    print_preprocessing_latex(x$regarima, digits = digits, decimal.mark = decimal.mark,
+    print_preprocessing_latex(x$regarima, signif.stars = signif.stars,
+                              digits = digits, decimal.mark = decimal.mark,
                               booktabs = booktabs, summary = summary,
                               likelihood = likelihood,
                               arima = arima, regression = regression, ...)
   }
   if(identical(format, "html")){
-    print_preprocessing_html(x$regarima, digits = digits, decimal.mark = decimal.mark,
+    print_preprocessing_html(x$regarima, signif.stars = signif.stars,
+                             digits = digits, decimal.mark = decimal.mark,
                              summary = summary,
                              likelihood = likelihood,
                              arima = arima, regression = regression, ...)
@@ -48,6 +54,7 @@ print_preprocessing.SA <- function(x, format = "latex",
 }
 #' @export
 print_preprocessing.regarima <- function(x, format = "latex",
+                                         signif.stars = TRUE,
                                     digits = 3, decimal.mark = getOption("OutDec"),
                                     booktabs = TRUE,
                                     summary = TRUE,
@@ -55,20 +62,23 @@ print_preprocessing.regarima <- function(x, format = "latex",
                                     arima = TRUE,
                                     regression = TRUE, ...){
   if(identical(format, "latex")){
-    print_preprocessing_latex(x, digits = digits, decimal.mark = decimal.mark,
+    print_preprocessing_latex(x, signif.stars = signif.stars,
+                              digits = digits, decimal.mark = decimal.mark,
                          booktabs = booktabs, summary = summary,
                          likelihood = likelihood,
                          arima = arima, regression = regression, ...)
   }
   if(identical(format, "html")){
-    print_preprocessing_html(x, digits = digits, decimal.mark = decimal.mark,
+    print_preprocessing_html(x, signif.stars = signif.stars,
+                             digits = digits, decimal.mark = decimal.mark,
                         summary = summary,
                         likelihood = likelihood,
                         arima = arima, regression = regression, ...)
   }
 }
 
-print_preprocessing_latex <- function(x, digits = 3, decimal.mark = getOption("OutDec"),
+print_preprocessing_latex <- function(x, signif.stars = TRUE,
+                                      digits = 3, decimal.mark = getOption("OutDec"),
                             booktabs = TRUE,
                             summary = TRUE,
                             likelihood = TRUE,
@@ -169,6 +179,13 @@ print_preprocessing_latex <- function(x, digits = 3, decimal.mark = getOption("O
     arima_coef <- format_table_coefficient(summary_x$coefficients$arima,
                                            format = "latex")
     if(!is.null(arima_coef)){
+      if (signif.stars) {
+        arima_coef <- add_stars(arima_coef)
+        arima_model <- c(paste0("\\",
+                               bold("Signif. codes: ", format = "latex"),
+                               "0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1"),
+                         arima_model)
+      }
       table <- kable(arima_coef, format = "latex", digits = digits,
                      escape = FALSE,
                      caption = "ARIMA coefficients",
@@ -176,7 +193,8 @@ print_preprocessing_latex <- function(x, digits = 3, decimal.mark = getOption("O
                      booktabs = booktabs,
                      align = "c") %>% 
         kable_styling(latex_options = "HOLD_position") %>% 
-        footnote(general = arima_model,general_title = "")
+        footnote(general = arima_model, general_title = "",
+                 escape = FALSE)
       cat(table)
     }else{
       cat(arima_coef)
@@ -200,6 +218,9 @@ print_preprocessing_latex <- function(x, digits = 3, decimal.mark = getOption("O
                                 format_table_coefficient(summary_x$coefficients$fixed_var, format = "latex")
       )
       if(!is.null(regression_table)){
+        if(signif.stars){
+          regression_table <- add_stars(regression_table)
+        }
         table <- kable(regression_table, format = "latex", digits = digits,
                        escape = "FALSE",
                        caption = "Regression coefficientss",
@@ -207,6 +228,14 @@ print_preprocessing_latex <- function(x, digits = 3, decimal.mark = getOption("O
                        booktabs = booktabs,
                        align = "c") %>% 
           kable_styling(latex_options = "HOLD_position")
+        if (signif.stars) {
+          table <- table %>% 
+            footnote(general = paste0("\\",
+                                     bold("Signif. codes: ", format = "latex"),
+                                       "0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1"),
+                     general_title = "",
+                     escape = FALSE)
+        }
         cat(table)
       }
     }
@@ -214,7 +243,8 @@ print_preprocessing_latex <- function(x, digits = 3, decimal.mark = getOption("O
   cat("\n\n")
   return(invisible(x))
 }
-print_preprocessing_html <- function(x, digits = 3, decimal.mark = getOption("OutDec"),
+print_preprocessing_html <- function(x, signif.stars = TRUE,
+                                     digits = 3, decimal.mark = getOption("OutDec"),
                                  booktabs = TRUE,
                                  summary = TRUE,
                                  likelihood = TRUE,
@@ -315,13 +345,20 @@ print_preprocessing_html <- function(x, digits = 3, decimal.mark = getOption("Ou
     arima_coef <- format_table_coefficient(summary_x$coefficients$arima,
                                            format = "html")
     if(!is.null(arima_coef)){
+      if (signif.stars) {
+        arima_coef <- add_stars(arima_coef)
+        arima_model <- c(paste(bold("Signif. codes:", format = "html"),
+                                    "0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"),
+                         arima_model)
+      }
       table <- kable(arima_coef, format = "html", digits = digits,
                      escape = FALSE,
                      caption = "ARIMA coefficients",
                      format.args = list(decimal.mark = decimal.mark),
                      align = "c") %>% 
         kable_styling() %>% 
-        footnote(general = arima_model,general_title = "")
+        footnote(general = arima_model, general_title = "",
+                 escape = FALSE)
       cat(table)
     }else{
       cat(arima_coef)
@@ -345,12 +382,22 @@ print_preprocessing_html <- function(x, digits = 3, decimal.mark = getOption("Ou
                                 format_table_coefficient(summary_x$coefficients$fixed_var, format = "html")
       )
       if(!is.null(regression_table)){
+        if(signif.stars){
+          regression_table <- add_stars(regression_table)
+        }
         table <- kable(regression_table, format = "html", digits = digits,
-                       escape = "FALSE",
+                       escape = FALSE,
                        caption = "Regression coefficientss",
                        format.args = list(decimal.mark = decimal.mark),
                        align = "c") %>% 
           kable_styling()
+        if (signif.stars) {
+          table <- table %>% 
+            footnote(general = paste(bold("Signif. codes:", format = "html"),
+                                       "0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"),
+                     general_title = "",
+                     escape = FALSE)
+        }
         cat(table)
       }
     }

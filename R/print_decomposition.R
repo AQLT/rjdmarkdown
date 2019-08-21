@@ -1,7 +1,8 @@
 #' Print the decomposition
 #'
 #' @inheritParams print_preprocessing
-#' 
+#' @param plot boolean indicating whether to plot or not the S-I Ratio.
+#' @param ... arguments passed to \code{\link[RJDemetra]{plot.decomposition_X11}} or \code{\link[RJDemetra]{plot.decomposition_SEATS}}.
 #' @importFrom kableExtra column_spec
 #' @export
 print_decomposition <- function(x, format = "latex",
@@ -16,6 +17,11 @@ print_decomposition.SA <- function(x, format = "latex",
                                    digits = 3, decimal.mark = getOption("OutDec"),
                                    booktabs = TRUE, ...){
   print_decomposition(x$decomposition, format = format,
+                      plot = plot,
+                      digits = digits, decimal.mark = decimal.mark,
+                      booktabs = booktabs, ...)
+  cat("\n\n")
+  print_decomposition(x$diagnostics, format = format,
                       plot = plot,
                       digits = digits, decimal.mark = decimal.mark,
                       booktabs = booktabs, ...)
@@ -164,4 +170,20 @@ print_formula <- function(x, var, digits = 2, decimal.mark = getOption("OutDec")
   polynome_formula <- paste0(polynome_coef, polynome_degre, collapse = "") 
   polynome_formula <- paste0("$1", polynome_formula,"$")
   cat(var,": ",polynome_formula,sep = "")
+}
+#' @export
+print_decomposition.diagnostics <- function(x, format = "latex",
+                                                    plot = TRUE, 
+                                                    digits = 2,
+                                                    decimal.mark = getOption("OutDec"),
+                                                    booktabs = TRUE, ...){
+  table <- kable(x$variance_decomposition, format = format, digits = digits,
+                 escape = TRUE,
+                 caption = "Relative contribution of the components to the stationary portion of the variance in the original series, after the removal of the long term trend",
+                 format.args = list(decimal.mark = decimal.mark),
+                 booktabs = booktabs,
+                 align = "c") %>% 
+    kable_styling(latex_options = "HOLD_position")
+  cat(table)
+  
 }

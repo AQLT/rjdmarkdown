@@ -21,3 +21,17 @@ underline <- function(x, format){
   }
   res
 }
+
+add_stars <- function(x, p_value = ncol(x),
+                      decimal.mark = getOption("OutDec"),
+                      digits = 3){
+  stars <- cut(x[, p_value],
+               breaks = c(0, 0.001, 0.01, 0.05, 0.1, 1),
+               include.lowest = TRUE,
+               labels = c("***","**","*",".",""))
+  table <- cbind(formatC(x, digits = digits, decimal.mark = decimal.mark,
+                         format = "f"),
+                 as.character(stars))
+  colnames(table) <- c(colnames(x), "")
+  table
+}

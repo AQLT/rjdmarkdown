@@ -4,7 +4,7 @@
 \alias{print_decomposition}
 \title{Print the decomposition}
 \usage{
-print_decomposition(x, format = "latex", digits = 3,
+print_decomposition(x, format = "latex", plot = TRUE, digits = 3,
   decimal.mark = getOption("OutDec"), booktabs = TRUE, ...)
 }
 \arguments{
@@ -12,13 +12,15 @@ print_decomposition(x, format = "latex", digits = 3,
 
 \item{format}{output format: \code{"latex"} or \code{"html"}.}
 
+\item{plot}{boolean indicating whether to plot or not the S-I Ratio.}
+
 \item{digits}{number of digits after the decimal point.}
 
 \item{decimal.mark}{the character to be used to indicate the numeric decimal point.}
 
 \item{booktabs}{boolean indicating whether to use or not the booktabs package (when \code{format = "latex"}).}
 
-\item{...}{unused.}
+\item{...}{arguments passed to \code{\link[RJDemetra]{plot.decomposition_X11}} or \code{\link[RJDemetra]{plot.decomposition_SEATS}}.}
 }
 \description{
 Print the decomposition

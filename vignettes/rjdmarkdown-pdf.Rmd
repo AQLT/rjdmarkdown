@@ -6,6 +6,7 @@ header-includes:
    - \usepackage{float}
    - \usepackage{array}
    - \usepackage{multirow}
+   - \usepackage{here}
 vignette: >
   %\VignetteIndexEntry{rjdmarkdown with PDF output}
   %\VignetteEngine{knitr::rmarkdown}
