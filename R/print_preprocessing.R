@@ -1,5 +1,7 @@
 #' Print the pre-processing model
 #' 
+#' Function to print the pre-processing model
+#' 
 #' @param x the object to print.
 #' @param format output format: \code{"latex"} or \code{"html"}.
 #' @param signif.stars logical; if \code{TRUE}, p-values are additionally encoded visually as ‘significance stars’ in order to help scanning of long coefficient tables
@@ -11,6 +13,12 @@
 #' @param arima boolean indicating whether to use or not the arima section.
 #' @param regression boolean indicating whether to use or not the regression section.
 #' @param ... unused.
+#' @examples 
+#' ipi <- RJDemetra::ipi_c_eu[, "FR"]
+#' sa_x13 <- RJDemetra::x13(ipi)
+#' sa_ts <- RJDemetra::tramoseats(ipi)
+#' print_preprocessing(sa_x13, format = "latex")
+#' print_preprocessing(sa_ts, format = "html")
 #' 
 #' @export
 #' @importFrom knitr kable
@@ -181,9 +189,7 @@ print_preprocessing_latex <- function(x, signif.stars = TRUE,
     if(!is.null(arima_coef)){
       if (signif.stars) {
         arima_coef <- add_stars(arima_coef)
-        arima_model <- c(paste0("\\",
-                               bold("Signif. codes: ", format = "latex"),
-                               "0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1"),
+        arima_model <- c(footnote_stars(format = "latex"),
                          arima_model)
       }
       table <- kable(arima_coef, format = "latex", digits = digits,
@@ -230,9 +236,7 @@ print_preprocessing_latex <- function(x, signif.stars = TRUE,
           kable_styling(latex_options = "HOLD_position")
         if (signif.stars) {
           table <- table %>% 
-            footnote(general = paste0("\\",
-                                     bold("Signif. codes: ", format = "latex"),
-                                       "0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1"),
+            footnote(general = footnote_stars(format = "latex"),
                      general_title = "",
                      escape = FALSE)
         }
@@ -347,8 +351,7 @@ print_preprocessing_html <- function(x, signif.stars = TRUE,
     if(!is.null(arima_coef)){
       if (signif.stars) {
         arima_coef <- add_stars(arima_coef)
-        arima_model <- c(paste(bold("Signif. codes:", format = "html"),
-                                    "0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"),
+        arima_model <- c(footnote_stars(format = "html"),
                          arima_model)
       }
       table <- kable(arima_coef, format = "html", digits = digits,
@@ -393,8 +396,7 @@ print_preprocessing_html <- function(x, signif.stars = TRUE,
           kable_styling()
         if (signif.stars) {
           table <- table %>% 
-            footnote(general = paste(bold("Signif. codes:", format = "html"),
-                                       "0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"),
+            footnote(general = footnote_stars(format = "html"),
                      general_title = "",
                      escape = FALSE)
         }

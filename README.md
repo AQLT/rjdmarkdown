@@ -25,10 +25,12 @@ devtools::install_github("AQLT/rjdmarkdown")
 
 ## Usage
 
-For the moment the only functions developped are:
+The functions developped are:
 
   - `print_preprocessing()` for the pre-processing model;  
-  - `print_decomposition()` for the decomposition.
+  - `print_decomposition()` for the decomposition;  
+  - `print_diagnostics()` to print diagnostics tests on the quality of
+    the seasonal adjustment.
 
 The available outputs are
 [LaTeX](https://aqlt.github.io/rjdmarkdown/articles/rjdmarkdown-pdf.pdf)
@@ -44,4 +46,5 @@ library(rjdmarkdown)
 mysa <- x13(ipi_c_eu[, "FR"])
 print_preprocessing(mysa, format = "latex")
 print_decomposition(mysa, format = "latex")
+print_diagnostics(mysa, format = "latex")
 ```

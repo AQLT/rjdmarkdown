@@ -33,5 +33,13 @@ print_preprocessing(x, format = "latex", signif.stars = TRUE,
 \item{...}{unused.}
 }
 \description{
-Print the pre-processing model
+Function to print the pre-processing model
+}
+\examples{
+ipi <- RJDemetra::ipi_c_eu[, "FR"]
+sa_x13 <- RJDemetra::x13(ipi)
+sa_ts <- RJDemetra::tramoseats(ipi)
+print_preprocessing(sa_x13, format = "latex")
+print_preprocessing(sa_ts, format = "html")
+
 }

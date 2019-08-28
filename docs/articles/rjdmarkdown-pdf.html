@@ -47,7 +47,7 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Vignettes
      
     <span class="caret"></span>
   </a>
@@ -126,27 +126,26 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rjdmarkdown)</a></code></pre></div>
-<p>For the moment the only functions developped are:</p>
+<p>The functions developped in <code>rjdmarkdown</code> are:</p>
 <ul>
 <li>
 <code><a href="../reference/print_preprocessing.html">print_preprocessing()</a></code> for the pre-processing model;<br>
 </li>
 <li>
-<code><a href="../reference/print_decomposition.html">print_decomposition()</a></code> for the decomposition.</li>
+<code><a href="../reference/print_decomposition.html">print_decomposition()</a></code> for the decomposition;<br>
+</li>
+<li>
+<code><a href="../reference/print_diagnostics.html">print_diagnostics()</a></code> to print diagnostics tests on the quality of the seasonal adjustment.</li>
 </ul>
 <p>The result is different between X-13ARIMA and TRAMO-SEATS models.</p>
-<p>For PDF outputs, the package booktabs and float must be used.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">header<span class="op">-</span>includes<span class="op">:</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="st">   </span><span class="op">-</span><span class="st"> </span>\usepackage{booktabs}</a>
-<a class="sourceLine" id="cb2-3" title="3">   <span class="op">-</span><span class="st"> </span>\usepackage{float}</a></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(RJDemetra)</a>
-<a class="sourceLine" id="cb3-2" title="2">sa_x13 &lt;-<span class="st"> </span><span class="kw">x13</span>(ipi_c_eu[, <span class="st">"FR"</span>])</a>
-<a class="sourceLine" id="cb3-3" title="3">sa_ts &lt;-<span class="kw">tramoseats</span>(ipi_c_eu[, <span class="st">"FR"</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rjdmarkdown)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(RJDemetra)</a>
+<a class="sourceLine" id="cb1-3" title="3">sa_x13 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/RJDemetra/topics/x13">x13</a></span>(ipi_c_eu[, <span class="st">"FR"</span>])</a>
+<a class="sourceLine" id="cb1-4" title="4">sa_ts &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/RJDemetra/topics/tramoseats">tramoseats</a></span>(ipi_c_eu[, <span class="st">"FR"</span>])</a></code></pre></div>
 <div id="x-13-arima-model" class="section level1">
 <h1 class="hasAnchor">
 <a href="#x-13-arima-model" class="anchor"></a>X-13-ARIMA model</h1>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="../reference/print_preprocessing.html">print_preprocessing</a></span>(sa_x13, <span class="dt">format =</span> <span class="st">"latex"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="../reference/print_preprocessing.html">print_preprocessing</a></span>(sa_x13, <span class="dt">format =</span> <span class="st">"latex"</span>)</a></code></pre></div>
 
 
 <p>336 observations</p>
@@ -162,14 +161,43 @@
 
 
 
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="../reference/print_decomposition.html">print_decomposition</a></span>(sa_x13, <span class="dt">format =</span> <span class="st">"latex"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="../reference/print_decomposition.html">print_decomposition</a></span>(sa_x13, <span class="dt">format =</span> <span class="st">"latex"</span>, <span class="dt">caption =</span> <span class="ot">NULL</span>)</a></code></pre></div>
 
 <p>Mode: additive</p>
+<div class="figure">
+<img src="rjdmarkdown-pdf_files/figure-html/unnamed-chunk-3-1.png" alt="S-I Ratio" width="700"><p class="caption">
+S-I Ratio
+</p>
+</div>
+
+
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="../reference/print_diagnostics.html">print_diagnostics</a></span>(sa_x13, <span class="dt">format =</span> <span class="st">"latex"</span>)</a></code></pre></div>
 
 </div>
 <div id="tramo-seats-model" class="section level1">
 <h1 class="hasAnchor">
 <a href="#tramo-seats-model" class="anchor"></a>TRAMO-SEATS model</h1>
+<p>Some others graphics can also be added with the <code>ggdemetra</code> package</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggdemetra)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> ipi_c_eu_df, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> FR)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb5-5" title="5">         <span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="ot">NULL</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggdemetra/topics/geom_sa">geom_sa</a></span>(<span class="dt">component =</span> <span class="st">"y_f"</span>, <span class="dt">linetype =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb5-7" title="7">            <span class="dt">frequency =</span> <span class="dv">12</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggdemetra/topics/geom_sa">geom_sa</a></span>(<span class="dt">component =</span> <span class="st">"sa"</span>, <span class="dt">color =</span> <span class="st">"red"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggdemetra/topics/geom_sa">geom_sa</a></span>(<span class="dt">component =</span> <span class="st">"sa_f"</span>, <span class="dt">color =</span> <span class="st">"red"</span>, <span class="dt">linetype =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggdemetra/topics/geom_outlier">geom_outlier</a></span>(<span class="dt">geom =</span> <span class="st">"label_repel"</span>,</a>
+<a class="sourceLine" id="cb5-11" title="11">                 <span class="dt">coefficients =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb5-12" title="12">                 <span class="dt">vjust =</span> <span class="dv">4</span>,</a>
+<a class="sourceLine" id="cb5-13" title="13">                 <span class="dt">ylim =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">NA</span>, <span class="dv">65</span>), <span class="dt">force =</span> <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb5-14" title="14">                 <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.03</span>, <span class="st">"npc"</span>),</a>
+<a class="sourceLine" id="cb5-15" title="15">                               <span class="dt">type =</span> <span class="st">"closed"</span>, <span class="dt">ends =</span> <span class="st">"last"</span>))</a></code></pre></div>
+<div class="figure">
+<img src="rjdmarkdown-pdf_files/figure-html/unnamed-chunk-4-1.png" alt="Seasonal adjustment of the French industrial production index" width="700"><p class="caption">
+Seasonal adjustment of the French industrial production index
+</p>
+</div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="../reference/print_preprocessing.html">print_preprocessing</a></span>(sa_ts, <span class="dt">format =</span> <span class="st">"latex"</span>)</a></code></pre></div>
 
 
@@ -187,9 +215,14 @@
 
 
 
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="../reference/print_decomposition.html">print_decomposition</a></span>(sa_ts, <span class="dt">format =</span> <span class="st">"latex"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="../reference/print_decomposition.html">print_decomposition</a></span>(sa_ts, <span class="dt">format =</span> <span class="st">"latex"</span>, <span class="dt">caption =</span> <span class="ot">NULL</span>)</a></code></pre></div>
 
 <p>Mode: multiplicative</p>
+<div class="figure">
+<img src="rjdmarkdown-pdf_files/figure-html/unnamed-chunk-4-2.png" alt="S-I Ratio" width="700"><p class="caption">
+S-I Ratio
+</p>
+</div>
 <p></p>
 <p>AR: <span class="math inline">\(1+0.352B+0.134B^{2}\)</span></p>
 <p>D: <span class="math inline">\(1-B-B^{12}+B^{13}\)</span></p>
@@ -209,6 +242,24 @@
 <p>Innovation variance: 0.160</p>
 <p></p>
 <p>Innovation variance: 0.206</p>
+
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="../reference/print_diagnostics.html">print_diagnostics</a></span>(sa_ts, <span class="dt">format =</span> <span class="st">"latex"</span>)</a></code></pre></div>
+
+</div>
+<div id="reproductibility" class="section level1">
+<h1 class="hasAnchor">
+<a href="#reproductibility" class="anchor"></a>Reproductibility</h1>
+<p>For PDF outputs, the package <code>booktabs</code> and <code>float</code> must be used.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">header<span class="op">-</span>includes<span class="op">:</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="st">   </span><span class="op">-</span><span class="st"> </span>\usepackage{booktabs}</a>
+<a class="sourceLine" id="cb9-3" title="3">   <span class="op">-</span><span class="st"> </span>\usepackage{float}</a>
+<a class="sourceLine" id="cb9-4" title="4">   <span class="op">-</span><span class="st"> </span>\floatplacement{figure}{H}</a></code></pre></div>
+<p>To produce this document, the <code>knitr</code> options were set as followed:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">collapse =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb10-2" title="2">  <span class="dt">comment =</span> <span class="st">"#&gt;"</span>, <span class="dt">fig.pos =</span> <span class="st">"h"</span>,</a>
+<a class="sourceLine" id="cb10-3" title="3">  <span class="dt">warning =</span> <span class="ot">FALSE</span>, <span class="dt">message =</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb10-4" title="4">)</a></code></pre></div>
+<p>And the options <code>results='asis', fig.cap = "S-I Ratio"</code> were used in the chunks.</p>
 </div>
   </div>
 
@@ -219,6 +270,7 @@
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#x-13-arima-model">X-13-ARIMA model</a></li>
       <li><a href="#tramo-seats-model">TRAMO-SEATS model</a></li>
+      <li><a href="#reproductibility">Reproductibility</a></li>
       </ul>
 </div>
       </div>

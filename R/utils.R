@@ -35,3 +35,13 @@ add_stars <- function(x, p_value = ncol(x),
   colnames(table) <- c(colnames(x), "")
   table
 }
+footnote_stars <- function(format = "latex"){
+  if (format == "latex"){
+    paste0("\\",
+           bold("Signif. codes: ", format = "latex"),
+           "0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1")
+  } else {
+    paste(bold("Signif. codes:", format = "html"),
+          "0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1")
+  }
+}

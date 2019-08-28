@@ -11,14 +11,16 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>", out.width = "100%",
-  fig.dim = c(8, 5), dpi = 300
+  fig.dim = c(8, 5), dpi = 300,
+  warning = FALSE, message = FALSE
 )
 ```
 
 The functions developped in `rjdmarkdown` are:
 
 - `print_preprocessing()` for the pre-processing model;  
-- `print_decomposition()` for the decomposition.
+- `print_decomposition()` for the decomposition;  
+- `print_diagnostics()` to print diagnostics tests on the quality of the seasonal adjustment.
 
 The result is different between X-13ARIMA and TRAMO-SEATS models.
 
@@ -31,16 +33,35 @@ sa_ts <- tramoseats(ipi_c_eu[, "FR"])
 
 # X-13-ARIMA model
 
-```{r, results='asis'}
+```{r, results='asis', fig.cap = "S-I Ratio"}
 print_preprocessing(sa_x13, format = "html")
 print_decomposition(sa_x13, format = "html", caption = NULL)
+print_diagnostics(sa_x13, format = "html")
 ```
 
 # TRAMO-SEATS model
 
-```{r, results='asis'}
+Some others graphics can also be added with the `ggdemetra` package
+
+```{r, results='asis', fig.cap = c("Seasonal adjustment of the French industrial production index", "S-I Ratio")}
+library(ggdemetra)
+ggplot(data = ipi_c_eu_df, mapping = aes(x = date, y = FR)) +
+    geom_line() +
+    labs(title = NULL,
+         x = NULL, y = NULL) +
+    geom_sa(component = "y_f", linetype = 2,
+            frequency = 12) + 
+    geom_sa(component = "sa", color = "red") +
+    geom_sa(component = "sa_f", color = "red", linetype = 2) + 
+    geom_outlier(geom = "label_repel",
+                 coefficients = TRUE,
+                 vjust = 4,
+                 ylim = c(NA, 65), force = 10,
+                 arrow = arrow(length = unit(0.03, "npc"),
+                               type = "closed", ends = "last"))
 print_preprocessing(sa_ts, format = "html")
 print_decomposition(sa_ts, format = "html", caption = NULL)
+print_diagnostics(sa_ts, format = "html")
 ```
 
 
@@ -51,7 +72,8 @@ To produce this document, the `knitr` options were set as followed:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>", out.width = "100%",
-  fig.dim = c(7, 5)
+  fig.dim = c(7, 5),
+  warning = FALSE, message = FALSE
 )
 ```
 

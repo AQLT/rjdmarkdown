@@ -19,7 +19,7 @@ navbar:
       text: Reference
       href: reference/index.html
     articles:
-      text: Articles
+      text: Vignettes
       menu:
       - text: rjdmarkdown with HTML output
         href: articles/rjdmarkdown-html.html

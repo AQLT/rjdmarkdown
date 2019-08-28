@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Print the decomposition — print_decomposition • rjdmarkdown</title>
+<title>Print the diagnostics — print_diagnostics • rjdmarkdown</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Print the decomposition — print_decomposition" />
+<meta property="og:title" content="Print the diagnostics — print_diagnostics" />
 
-<meta property="og:description" content="Function to print the decomposition model" />
+<meta property="og:description" content="Function to print diagnostics tests on the quality of the pre-processing and the decomposition" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -150,19 +150,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Print the decomposition</h1>
-    <small class="dont-index">Source: <a href='https://github.com/AQLT/rjdmarkdown/blob/master/R/print_decomposition.R'><code>R/print_decomposition.R</code></a></small>
-    <div class="hidden name"><code>print_decomposition.Rd</code></div>
+    <h1>Print the diagnostics</h1>
+    <small class="dont-index">Source: <a href='https://github.com/AQLT/rjdmarkdown/blob/master/R/print_diagnostics.R'><code>R/print_diagnostics.R</code></a></small>
+    <div class="hidden name"><code>print_diagnostics.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Function to print the decomposition model</p>
+    <p>Function to print diagnostics tests on the quality of the pre-processing and the decomposition</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>print_decomposition</span>(<span class='no'>x</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>, <span class='kw'>plot</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"OutDec"</span>), <span class='kw'>booktabs</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>print_diagnostics</span>(<span class='no'>x</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>, <span class='kw'>signif.stars</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>tests</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"mean"</span>, <span class='st'>"skewness"</span>, <span class='st'>"kurtosis"</span>, <span class='st'>"ljung box"</span>,
+  <span class='st'>"ljung box (residuals at seasonal lags)"</span>,
+  <span class='st'>"ljung box (squared residuals)"</span>, <span class='st'>"qs test on sa"</span>, <span class='st'>"qs test on i"</span>,
+  <span class='st'>"f-test on sa (seasonal dummies)"</span>, <span class='st'>"f-test on i (seasonal dummies)"</span>,
+  <span class='st'>"Residual seasonality (entire series)"</span>,
+  <span class='st'>"Residual seasonality (last 3 years)"</span>, <span class='st'>"f-test on sa (td)"</span>,
+  <span class='st'>"f-test on i (td)"</span>), <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"OutDec"</span>),
+  <span class='kw'>booktabs</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -176,8 +183,12 @@
       <td><p>output format: <code>"latex"</code> or <code>"html"</code>.</p></td>
     </tr>
     <tr>
-      <th>plot</th>
-      <td><p>boolean indicating whether to plot or not the S-I Ratio.</p></td>
+      <th>signif.stars</th>
+      <td><p>logical; if <code>TRUE</code>, p-values are additionally encoded visually as ‘significance stars’ in order to help scanning of long coefficient tables</p></td>
+    </tr>
+    <tr>
+      <th>tests</th>
+      <td><p>characters containing the names of the tests to print.</p></td>
     </tr>
     <tr>
       <th>digits</th>
@@ -193,7 +204,7 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>arguments passed to <code><a href='https://www.rdocumentation.org/packages/RJDemetra/topics/plot'>plot.decomposition_X11</a></code> or <code><a href='https://www.rdocumentation.org/packages/RJDemetra/topics/plot'>plot.decomposition_SEATS</a></code>.</p></td>
+      <td><p>unused arguments.</p></td>
     </tr>
     </table>
     
@@ -202,149 +213,128 @@
     <pre class="examples"><div class='input'><span class='no'>ipi</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/RJDemetra/topics/ipi_c_eu'>ipi_c_eu</a></span>[, <span class='st'>"FR"</span>]
 <span class='no'>sa_x13</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/RJDemetra/topics/x13'>x13</a></span>(<span class='no'>ipi</span>)
 <span class='no'>sa_ts</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/RJDemetra/topics/tramoseats'>tramoseats</a></span>(<span class='no'>ipi</span>)
-<span class='fu'>print_decomposition</span>(<span class='no'>sa_x13</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>)</div><div class='output co'>#&gt; \underline{\textbf{Decomposition (X-11)}}
+<span class='fu'>print_diagnostics</span>(<span class='no'>sa_x13</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>)</div><div class='output co'>#&gt; \begin{table}[H]
 #&gt; 
-#&gt; Mode: additive
-#&gt; </div><div class='img'><img src='print_decomposition-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
-#&gt; 
-#&gt; \begin{table}[H]
-#&gt; 
-#&gt; \caption{\label{tab:}M-statistics}
+#&gt; \caption{\label{tab:}Diagnostics tests}
 #&gt; \centering
-#&gt; \begin{tabular}{lc&gt;{\raggedright\arraybackslash}p{0.7\textwidth}}
-#&gt; \toprule
-#&gt;   &amp; Value &amp; Description\\
-#&gt; \midrule
-#&gt; M-1 &amp; 0.061 &amp; The relative contribution of the irregular over three months span\\
-#&gt; M-2 &amp; 0.034 &amp; The relative contribution of the irregular component to the stationary portion of the variance\\
-#&gt; M-3 &amp; 0.840 &amp; The amount of period to period change in the irregular component as compared to the amount of period to period change in the trend\\
-#&gt; M-4 &amp; 0.420 &amp; The amount of autocorrelation in the irregular as described by the average duration of run\\
-#&gt; M-5 &amp; 0.697 &amp; The number of periods it takes the change in the trend to surpass the amount of change in the irregular\\
-#&gt; \addlinespace
-#&gt; M-6 &amp; 0.236 &amp; The amount of year to year change in the irregular as compared to the amount of year to year change in the seasonal\\
-#&gt; M-7 &amp; 0.075 &amp; The amount of moving seasonality present relative to the amount of stable seasonality\\
-#&gt; M-8 &amp; 0.206 &amp; The size of the fluctuations in the seasonal component throughout the whole series\\
-#&gt; M-9 &amp; 0.055 &amp; The average linear movement in the seasonal component throughout the whole series\\
-#&gt; M-10 &amp; 0.166 &amp; The size of the fluctuations in the seasonal component in the recent years\\
-#&gt; \addlinespace
-#&gt; M-11 &amp; 0.137 &amp; The average linear movement in the seasonal component in the recent years\\
-#&gt; Q &amp; 0.272 &amp; \\
-#&gt; Q-M2 &amp; 0.301 &amp; \\
-#&gt; \bottomrule
-#&gt; \multicolumn{3}{l}{\textbf{Final filters}: M3x5, Henderson-13 terms}\\
+#&gt; \begin{tabular}{l|c|c}
+#&gt; \hline
+#&gt;   &amp; $\mathbb P (&gt; \lvert t \rvert)$ &amp; \\
+#&gt; \hline
+#&gt; mean &amp; 0.682 &amp; \\
+#&gt; \hline
+#&gt; skewness &amp; 0.726 &amp; \\
+#&gt; \hline
+#&gt; kurtosis &amp; 0.018 &amp; *\\
+#&gt; \hline
+#&gt; ljung box &amp; 0.023 &amp; *\\
+#&gt; \hline
+#&gt; ljung box (residuals at seasonal lags) &amp; 0.888 &amp; \\
+#&gt; \hline
+#&gt; ljung box (squared residuals) &amp; 0.315 &amp; \\
+#&gt; \hline
+#&gt; qs test on sa &amp; 1.000 &amp; \\
+#&gt; \hline
+#&gt; qs test on i &amp; 1.000 &amp; \\
+#&gt; \hline
+#&gt; f-test on sa (seasonal dummies) &amp; 0.980 &amp; \\
+#&gt; \hline
+#&gt; f-test on i (seasonal dummies) &amp; 0.922 &amp; \\
+#&gt; \hline
+#&gt; Residual seasonality (entire series) &amp; 0.969 &amp; \\
+#&gt; \hline
+#&gt; Residual seasonality (last 3 years) &amp; 0.897 &amp; \\
+#&gt; \hline
+#&gt; f-test on sa (td) &amp; 0.980 &amp; \\
+#&gt; \hline
+#&gt; f-test on i (td) &amp; 1.000 &amp; \\
+#&gt; \hline
+#&gt; \multicolumn{3}{l}{\textbf{Signif. codes: }0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1}\\
 #&gt; \end{tabular}
-#&gt; \end{table}
-#&gt; 
-#&gt; \begin{table}[H]
-#&gt; 
-#&gt; \caption{\label{tab:}Relative contribution of the components to the stationary portion of the variance in the original series, after the removal of the long term trend}
-#&gt; \centering
-#&gt; \begin{tabular}{lc}
-#&gt; \toprule
-#&gt;   &amp; Component\\
-#&gt; \midrule
-#&gt; Cycle &amp; 1.646\\
-#&gt; Seasonal &amp; 49.667\\
-#&gt; Irregular &amp; 0.411\\
-#&gt; TD \&amp; Hol. &amp; 0.057\\
-#&gt; Others &amp; 49.814\\
-#&gt; \addlinespace
-#&gt; Total &amp; 101.596\\
-#&gt; \bottomrule
-#&gt; \end{tabular}
-#&gt; \end{table}</div><div class='input'><span class='fu'>print_decomposition</span>(<span class='no'>sa_ts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>)</div><div class='output co'>#&gt; &lt;u&gt;&lt;b&gt;Decomposition (SEATS)&lt;/b&gt;&lt;/u&gt;
-#&gt; 
-#&gt; Mode: multiplicative
-#&gt; </div><div class='img'><img src='print_decomposition-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
-#&gt; 
-#&gt; &lt;b&gt;Model&lt;/b&gt;
-#&gt; 
-#&gt; AR: $1+0.352B+0.134B^{2}$
-#&gt; 
-#&gt; D: $1-B-B^{12}+B^{13}$
-#&gt; 
-#&gt; MA: $1-0.187B-0.611B^{12}+0.114B^{13}$
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; &lt;b&gt;SA&lt;/b&gt;
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; D: $1-2.000B+B^{2}$
-#&gt; 
-#&gt; MA: $1-1.314B+0.340B^{2}$
-#&gt; 
-#&gt; Innovation variance:  0.467 
-#&gt; 
-#&gt; &lt;b&gt;Trend&lt;/b&gt;
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; D: $1-2.000B+B^{2}$
-#&gt; 
-#&gt; MA: $1+0.040B-0.960B^{2}$
-#&gt; 
-#&gt; Innovation variance:  0.049 
-#&gt; 
-#&gt; &lt;b&gt;Seasonal&lt;/b&gt;
-#&gt; 
-#&gt; AR: $1+0.352B+0.134B^{2}$
-#&gt; 
-#&gt; D: $1+B+B^{2}+B^{3}+B^{4}+B^{5}+B^{6}+B^{7}+B^{8}+B^{9}+B^{10}+B^{11}$
-#&gt; 
-#&gt; MA: $1+0.718B+0.461B^{2}+0.310B^{3}+0.132B^{4}-0.049B^{5}-0.217B^{6}-0.355B^{7}-0.445B^{8}-0.470B^{9}-0.377B^{10}-0.166B^{11}-0.411B^{12}-0.133B^{13}$
-#&gt; 
-#&gt; Innovation variance:  0.160 
-#&gt; 
-#&gt; &lt;b&gt;Irregular&lt;/b&gt;
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; Innovation variance:  0.206 
-#&gt; 
-#&gt; 
-#&gt; 
-#&gt; &lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
-#&gt; &lt;caption&gt;Relative contribution of the components to the stationary portion of the variance in the original series, after the removal of the long term trend&lt;/caption&gt;
+#&gt; \end{table}</div><div class='input'><span class='fu'>print_diagnostics</span>(<span class='no'>sa_ts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>)</div><div class='output co'>#&gt; &lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+#&gt; &lt;caption&gt;Diagnostics tests&lt;/caption&gt;
 #&gt;  &lt;thead&gt;
 #&gt;   &lt;tr&gt;
 #&gt;    &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-#&gt;    &lt;th style="text-align:center;"&gt; Component &lt;/th&gt;
+#&gt;    &lt;th style="text-align:center;"&gt; P (&amp;gt; | t|) &lt;/th&gt;
+#&gt;    &lt;th style="text-align:center;"&gt;  &lt;/th&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;  &lt;/thead&gt;
 #&gt; &lt;tbody&gt;
 #&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; Cycle &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 2.181 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; mean &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.659 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; Seasonal &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 66.768 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; skewness &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.976 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; Irregular &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.106 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; kurtosis &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.901 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; TD &amp;amp; Hol. &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.069 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; ljung box &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.002 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; ** &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; Others &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 30.507 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; ljung box (residuals at seasonal lags) &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.882 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; Total &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 99.630 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; ljung box (squared residuals) &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.484 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; qs test on sa &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 1.000 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; qs test on i &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 1.000 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; f-test on sa (seasonal dummies) &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 1.000 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; f-test on i (seasonal dummies) &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 1.000 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; Residual seasonality (entire series) &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 1.000 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; Residual seasonality (last 3 years) &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.977 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; f-test on sa (td) &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.927 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+#&gt;   &lt;/tr&gt;
+#&gt;   &lt;tr&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; f-test on i (td) &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 1.000 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt; &lt;/tbody&gt;
-#&gt; &lt;/table&gt;</div><div class='input'>
-</div></pre>
+#&gt; &lt;tfoot&gt;&lt;tr&gt;&lt;td style="padding: 0; border: 0;" colspan="100%"&gt;
+#&gt; &lt;sup&gt;&lt;/sup&gt; &lt;b&gt;Signif. codes:&lt;/b&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
+#&gt; &lt;/table&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

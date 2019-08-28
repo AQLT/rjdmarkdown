@@ -1,14 +1,14 @@
 Package: rjdmarkdown
 Type: Package
-Title: 'rmarkdown' and 'RJDemetra'
+Title: 'rmarkdown' Extension for Formatted 'RJDemetra' Outputs
 Version: 0.1.0
 Authors@R: c(
   person("Alain", "Quartier-la-Tente", role = c("aut", "cre"),
                  email = "alain.quartier@yahoo.fr"))
 Description: Functions to have nice 'rmarkdown' outputs of the 
-  seasonal adjustment models made by 'RJDemetra'.
+  seasonal and trading day adjustment models made with 'RJDemetra'.
 Depends:
-    R (>= 3.1.1)
+    R (>= 3.1.1),
 Imports:
     RJDemetra,
     knitr,
@@ -18,8 +18,10 @@ License: EUPL
 URL: https://github.com/AQLT/rjdmarkdown
 LazyData: TRUE
 BugReports: https://github.com/AQLT/rjdmarkdown/issues
+SystemRequirements: Java SE 8 or higher
 Encoding: UTF-8
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
 Suggests: 
-    rmarkdown
+    rmarkdown,
+    ggdemetra

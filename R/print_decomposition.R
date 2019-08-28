@@ -1,8 +1,17 @@
 #' Print the decomposition
 #'
+#' Function to print the decomposition model
+#'
 #' @inheritParams print_preprocessing
 #' @param plot boolean indicating whether to plot or not the S-I Ratio.
 #' @param ... arguments passed to \code{\link[RJDemetra]{plot.decomposition_X11}} or \code{\link[RJDemetra]{plot.decomposition_SEATS}}.
+#' @examples 
+#' ipi <- RJDemetra::ipi_c_eu[, "FR"]
+#' sa_x13 <- RJDemetra::x13(ipi)
+#' sa_ts <- RJDemetra::tramoseats(ipi)
+#' print_decomposition(sa_x13, format = "latex")
+#' print_decomposition(sa_ts, format = "html")
+#' 
 #' @importFrom kableExtra column_spec
 #' @export
 print_decomposition <- function(x, format = "latex",
