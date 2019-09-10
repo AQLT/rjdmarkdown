@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>rjdmarkdown with PDF output • rjdmarkdown</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="rjdmarkdown with PDF output">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -56,7 +57,7 @@
       <a href="../articles/rjdmarkdown-html.html">rjdmarkdown with HTML output</a>
     </li>
     <li>
-      <a href="../articles/rjdmarkdown-pdf.html">rjdmarkdown with PDF output</a>
+      <a href="../articles/rjdmarkdown-pdf.pdf">rjdmarkdown with PDF output</a>
     </li>
   </ul>
 </li>
@@ -113,6 +114,7 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -138,10 +140,10 @@
 <code><a href="../reference/print_diagnostics.html">print_diagnostics()</a></code> to print diagnostics tests on the quality of the seasonal adjustment.</li>
 </ul>
 <p>The result is different between X-13ARIMA and TRAMO-SEATS models.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rjdmarkdown)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(RJDemetra)</a>
-<a class="sourceLine" id="cb1-3" title="3">sa_x13 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/RJDemetra/topics/x13">x13</a></span>(ipi_c_eu[, <span class="st">"FR"</span>])</a>
-<a class="sourceLine" id="cb1-4" title="4">sa_ts &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/RJDemetra/topics/tramoseats">tramoseats</a></span>(ipi_c_eu[, <span class="st">"FR"</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rjdmarkdown)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(RJDemetra)</a>
+<a class="sourceLine" id="cb1-3" title="3">sa_x13 &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/RJDemetra/man/x13.html">x13</a></span>(ipi_c_eu[, <span class="st">"FR"</span>])</a>
+<a class="sourceLine" id="cb1-4" title="4">sa_ts &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/RJDemetra/man/tramoseats.html">tramoseats</a></span>(ipi_c_eu[, <span class="st">"FR"</span>])</a></code></pre></div>
 <div id="x-13-arima-model" class="section level1">
 <h1 class="hasAnchor">
 <a href="#x-13-arima-model" class="anchor"></a>X-13-ARIMA model</h1>
@@ -178,19 +180,19 @@ S-I Ratio
 <h1 class="hasAnchor">
 <a href="#tramo-seats-model" class="anchor"></a>TRAMO-SEATS model</h1>
 <p>Some others graphics can also be added with the <code>ggdemetra</code> package</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggdemetra)</a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggdemetra)</a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> ipi_c_eu_df, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> FR)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-3" title="3"><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-4" title="4"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="ot">NULL</span>,</a>
 <a class="sourceLine" id="cb5-5" title="5">         <span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="ot">NULL</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggdemetra/topics/geom_sa">geom_sa</a></span>(<span class="dt">component =</span> <span class="st">"y_f"</span>, <span class="dt">linetype =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/pkg/ggdemetra/man/geom_sa.html">geom_sa</a></span>(<span class="dt">component =</span> <span class="st">"y_f"</span>, <span class="dt">linetype =</span> <span class="dv">2</span>,</a>
 <a class="sourceLine" id="cb5-7" title="7">            <span class="dt">frequency =</span> <span class="dv">12</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggdemetra/topics/geom_sa">geom_sa</a></span>(<span class="dt">component =</span> <span class="st">"sa"</span>, <span class="dt">color =</span> <span class="st">"red"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggdemetra/topics/geom_sa">geom_sa</a></span>(<span class="dt">component =</span> <span class="st">"sa_f"</span>, <span class="dt">color =</span> <span class="st">"red"</span>, <span class="dt">linetype =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggdemetra/topics/geom_outlier">geom_outlier</a></span>(<span class="dt">geom =</span> <span class="st">"label_repel"</span>,</a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/pkg/ggdemetra/man/geom_sa.html">geom_sa</a></span>(<span class="dt">component =</span> <span class="st">"sa"</span>, <span class="dt">color =</span> <span class="st">"red"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/pkg/ggdemetra/man/geom_sa.html">geom_sa</a></span>(<span class="dt">component =</span> <span class="st">"sa_f"</span>, <span class="dt">color =</span> <span class="st">"red"</span>, <span class="dt">linetype =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/pkg/ggdemetra/man/geom_outlier.html">geom_outlier</a></span>(<span class="dt">geom =</span> <span class="st">"label_repel"</span>,</a>
 <a class="sourceLine" id="cb5-11" title="11">                 <span class="dt">coefficients =</span> <span class="ot">TRUE</span>,</a>
 <a class="sourceLine" id="cb5-12" title="12">                 <span class="dt">vjust =</span> <span class="dv">4</span>,</a>
-<a class="sourceLine" id="cb5-13" title="13">                 <span class="dt">ylim =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">NA</span>, <span class="dv">65</span>), <span class="dt">force =</span> <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb5-13" title="13">                 <span class="dt">ylim =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="ot">NA</span>, <span class="dv">65</span>), <span class="dt">force =</span> <span class="dv">10</span>,</a>
 <a class="sourceLine" id="cb5-14" title="14">                 <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.03</span>, <span class="st">"npc"</span>),</a>
 <a class="sourceLine" id="cb5-15" title="15">                               <span class="dt">type =</span> <span class="st">"closed"</span>, <span class="dt">ends =</span> <span class="st">"last"</span>))</a></code></pre></div>
 <div class="figure">
@@ -278,17 +280,20 @@ S-I Ratio
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Alain Quartier-la-Tente.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
