@@ -8,11 +8,13 @@
 
 <title>Print the pre-processing model — print_preprocessing • rjdmarkdown</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -32,10 +34,11 @@
 
 
 
-<meta property="og:title" content="Print the pre-processing model — print_preprocessing" />
 
+<meta property="og:title" content="Print the pre-processing model — print_preprocessing" />
 <meta property="og:description" content="Function to print the pre-processing model" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -110,15 +113,17 @@
       <a href="https://github.com/AQLT/ggdemetra">ggdemetra</a>
     </li>
     <li>
-      <a href="https://github.com/AQLT/rjdqa">rjdqa</a>
+      <a href="https://github.com/AQLT/rjwsacruncher">rjwsacruncher</a>
     </li>
     <li>
-      <a href="https://github.com/AQLT/rjwsacruncher">rjwsacruncher</a>
+      <a href="https://github.com/AQLT/rjdworkspace">rjdworkspace</a>
+    </li>
+    <li>
+      <a href="https://github.com/AQLT/rjdqa">rjdqa</a>
     </li>
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -160,16 +165,23 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Function to print the pre-processing model</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>print_preprocessing</span>(<span class='no'>x</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>, <span class='kw'>signif.stars</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"OutDec"</span>), <span class='kw'>booktabs</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>summary</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>likelihood</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>arima</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>regression</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>print_preprocessing</span>(
+  <span class='no'>x</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>,
+  <span class='kw'>signif.stars</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"OutDec"</span>),
+  <span class='kw'>booktabs</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>summary</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>likelihood</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>arima</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>regression</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
+)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -218,7 +230,7 @@
       <td><p>unused.</p></td>
     </tr>
     </table>
-    
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>ipi</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/RJDemetra/man/ipi_c_eu.html'>ipi_c_eu</a></span>[, <span class='st'>"FR"</span>]
@@ -254,7 +266,7 @@
 #&gt; 
 #&gt; \caption{\label{tab:}ARIMA coefficients}
 #&gt; \centering
-#&gt; \begin{tabular}{lccccc}
+#&gt; \begin{tabular}[t]{lccccc}
 #&gt; \toprule
 #&gt;   &amp; Coefficients &amp; Std. Error &amp; T-stat &amp; $\mathbb P (&gt; \lvert t \rvert)$ &amp; \\
 #&gt; \midrule
@@ -272,7 +284,7 @@
 #&gt; 
 #&gt; \caption{\label{tab:}Regression coefficientss}
 #&gt; \centering
-#&gt; \begin{tabular}{lccccc}
+#&gt; \begin{tabular}[t]{lccccc}
 #&gt; \toprule
 #&gt;   &amp; Coefficients &amp; Std. Error &amp; T-stat &amp; $\mathbb P (&gt; \lvert t \rvert)$ &amp; \\
 #&gt; \midrule
@@ -481,7 +493,6 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -495,7 +506,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

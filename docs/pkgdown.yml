@@ -1,7 +1,5 @@
-pandoc: '2.4'
-pkgdown: 1.4.0
+pandoc: 2.3.1
+pkgdown: 1.4.1
 pkgdown_sha: ~
-articles:
-  rjdmarkdown-html: rjdmarkdown-html.html
-  rjdmarkdown-pdf: rjdmarkdown-pdf.html
+articles: []
 
