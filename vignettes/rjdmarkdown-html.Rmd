@@ -41,7 +41,7 @@ print_diagnostics(sa_x13, format = "html")
 
 # TRAMO-SEATS model
 
-Some others graphics can also be added with the `ggdemetra` package
+Some others graphics can also be added with the [`ggdemetra`](https://aqlt.github.io/ggdemetra/) package, for example to add the seasonally adjusted series and its forecasts:
 
 ```{r, results='asis', fig.cap = c("Seasonal adjustment of the French industrial production index", "S-I Ratio")}
 library(ggdemetra)
@@ -50,15 +50,9 @@ ggplot(data = ipi_c_eu_df, mapping = aes(x = date, y = FR)) +
     labs(title = NULL,
          x = NULL, y = NULL) +
     geom_sa(component = "y_f", linetype = 2,
-            frequency = 12) + 
+            frequency = 12, method = "tramoseats") + 
     geom_sa(component = "sa", color = "red") +
-    geom_sa(component = "sa_f", color = "red", linetype = 2) + 
-    geom_outlier(geom = "label_repel",
-                 coefficients = TRUE,
-                 vjust = 4,
-                 ylim = c(NA, 65), force = 10,
-                 arrow = arrow(length = unit(0.03, "npc"),
-                               type = "closed", ends = "last"))
+    geom_sa(component = "sa_f", color = "red", linetype = 2)
 print_preprocessing(sa_ts, format = "html")
 print_decomposition(sa_ts, format = "html", caption = NULL)
 print_diagnostics(sa_ts, format = "html")

@@ -4,10 +4,19 @@
 \alias{print_preprocessing}
 \title{Print the pre-processing model}
 \usage{
-print_preprocessing(x, format = "latex", signif.stars = TRUE,
-  digits = 3, decimal.mark = getOption("OutDec"), booktabs = TRUE,
-  summary = TRUE, likelihood = TRUE, arima = TRUE,
-  regression = TRUE, ...)
+print_preprocessing(
+  x,
+  format = "latex",
+  signif.stars = TRUE,
+  digits = 3,
+  decimal.mark = getOption("OutDec"),
+  booktabs = TRUE,
+  summary = TRUE,
+  likelihood = TRUE,
+  arima = TRUE,
+  regression = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{the object to print.}

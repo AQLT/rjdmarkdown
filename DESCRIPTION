@@ -4,7 +4,8 @@ Title: 'rmarkdown' Extension for Formatted 'RJDemetra' Outputs
 Version: 0.1.0
 Authors@R: c(
   person("Alain", "Quartier-la-Tente", role = c("aut", "cre"),
-                 email = "alain.quartier@yahoo.fr"))
+                 email = "alain.quartier@yahoo.fr",
+                 comment = c(ORCID = "0000-0001-7890-3857")))
 Description: Functions to have nice 'rmarkdown' outputs of the 
   seasonal and trading day adjustment models made with 'RJDemetra'.
 Depends:
@@ -20,7 +21,7 @@ LazyData: TRUE
 BugReports: https://github.com/AQLT/rjdmarkdown/issues
 SystemRequirements: Java SE 8 or higher
 Encoding: UTF-8
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 VignetteBuilder: knitr
 Suggests: 
     rmarkdown,

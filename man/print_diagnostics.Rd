@@ -4,15 +4,20 @@
 \alias{print_diagnostics}
 \title{Print the diagnostics}
 \usage{
-print_diagnostics(x, format = "latex", signif.stars = TRUE,
+print_diagnostics(
+  x,
+  format = "latex",
+  signif.stars = TRUE,
   tests = c("mean", "skewness", "kurtosis", "ljung box",
-  "ljung box (residuals at seasonal lags)",
-  "ljung box (squared residuals)", "qs test on sa", "qs test on i",
-  "f-test on sa (seasonal dummies)", "f-test on i (seasonal dummies)",
-  "Residual seasonality (entire series)",
-  "Residual seasonality (last 3 years)", "f-test on sa (td)",
-  "f-test on i (td)"), digits = 3, decimal.mark = getOption("OutDec"),
-  booktabs = TRUE, ...)
+    "ljung box (residuals at seasonal lags)", "ljung box (squared residuals)",
+    "qs test on sa", "qs test on i", "f-test on sa (seasonal dummies)",
+    "f-test on i (seasonal dummies)", "Residual seasonality (entire series)",
+    "Residual seasonality (last 3 years)", "f-test on sa (td)", "f-test on i (td)"),
+  digits = 3,
+  decimal.mark = getOption("OutDec"),
+  booktabs = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{the object to print.}

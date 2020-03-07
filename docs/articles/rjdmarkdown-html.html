@@ -884,22 +884,16 @@ f-test on i (td)
 <div id="tramo-seats-model" class="section level1">
 <h1 class="hasAnchor">
 <a href="#tramo-seats-model" class="anchor"></a>TRAMO-SEATS model</h1>
-<p>Some others graphics can also be added with the <code>ggdemetra</code> package</p>
+<p>Some others graphics can also be added with the <a href="https://aqlt.github.io/ggdemetra/"><code>ggdemetra</code></a> package, for example to add the seasonally adjusted series and its forecasts:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggdemetra)</a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> ipi_c_eu_df, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> FR)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-3" title="3"><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-4" title="4"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="ot">NULL</span>,</a>
 <a class="sourceLine" id="cb5-5" title="5">         <span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="ot">NULL</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-6" title="6"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/pkg/ggdemetra/man/geom_sa.html">geom_sa</a></span>(<span class="dt">component =</span> <span class="st">"y_f"</span>, <span class="dt">linetype =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb5-7" title="7">            <span class="dt">frequency =</span> <span class="dv">12</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-7" title="7">            <span class="dt">frequency =</span> <span class="dv">12</span>, <span class="dt">method =</span> <span class="st">"tramoseats"</span>) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-8" title="8"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/pkg/ggdemetra/man/geom_sa.html">geom_sa</a></span>(<span class="dt">component =</span> <span class="st">"sa"</span>, <span class="dt">color =</span> <span class="st">"red"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/pkg/ggdemetra/man/geom_sa.html">geom_sa</a></span>(<span class="dt">component =</span> <span class="st">"sa_f"</span>, <span class="dt">color =</span> <span class="st">"red"</span>, <span class="dt">linetype =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/pkg/ggdemetra/man/geom_outlier.html">geom_outlier</a></span>(<span class="dt">geom =</span> <span class="st">"label_repel"</span>,</a>
-<a class="sourceLine" id="cb5-11" title="11">                 <span class="dt">coefficients =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb5-12" title="12">                 <span class="dt">vjust =</span> <span class="dv">4</span>,</a>
-<a class="sourceLine" id="cb5-13" title="13">                 <span class="dt">ylim =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="ot">NA</span>, <span class="dv">65</span>), <span class="dt">force =</span> <span class="dv">10</span>,</a>
-<a class="sourceLine" id="cb5-14" title="14">                 <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.03</span>, <span class="st">"npc"</span>),</a>
-<a class="sourceLine" id="cb5-15" title="15">                               <span class="dt">type =</span> <span class="st">"closed"</span>, <span class="dt">ends =</span> <span class="st">"last"</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb5-9" title="9"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/pkg/ggdemetra/man/geom_sa.html">geom_sa</a></span>(<span class="dt">component =</span> <span class="st">"sa_f"</span>, <span class="dt">color =</span> <span class="st">"red"</span>, <span class="dt">linetype =</span> <span class="dv">2</span>)</a></code></pre></div>
 <div class="figure">
 <img src="rjdmarkdown-html_files/figure-html/unnamed-chunk-4-1.png" alt="Seasonal adjustment of the French industrial production index" width="100%"><p class="caption">
 Seasonal adjustment of the French industrial production index

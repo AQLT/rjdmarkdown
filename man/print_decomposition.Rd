@@ -4,8 +4,15 @@
 \alias{print_decomposition}
 \title{Print the decomposition}
 \usage{
-print_decomposition(x, format = "latex", plot = TRUE, digits = 3,
-  decimal.mark = getOption("OutDec"), booktabs = TRUE, ...)
+print_decomposition(
+  x,
+  format = "latex",
+  plot = TRUE,
+  digits = 3,
+  decimal.mark = getOption("OutDec"),
+  booktabs = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{the object to print.}
