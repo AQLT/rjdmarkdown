@@ -30,6 +30,47 @@ print_diagnostics <- function(x, format = "latex",
   UseMethod("print_diagnostics", x)
 }
 #' @export
+print_diagnostics.jSA <- function(x, format = "latex",
+                                 signif.stars = TRUE,
+                                 tests = c("mean", "skewness", "kurtosis",
+                                           "ljung box",
+                                           "ljung box (residuals at seasonal lags)", 
+                                           "ljung box (squared residuals)",
+                                           "qs test on sa", "qs test on i",
+                                           "f-test on sa (seasonal dummies)", 
+                                           "f-test on i (seasonal dummies)",
+                                           "Residual seasonality (entire series)", 
+                                           "Residual seasonality (last 3 years)",
+                                           "f-test on sa (td)", "f-test on i (td)"),
+                                 digits = 3, decimal.mark = getOption("OutDec"),
+                                 booktabs = TRUE, ...){
+  x <- RJDemetra::jSA2R(x)
+  print_diagnostics(x, format = format,
+                    signif.stars = signif.stars,
+                    tests = tests, digits = digits, decimal.mark = decimal.mark,
+                    booktabs = booktabs)
+}
+#' @export
+print_diagnostics.regarima <- function(x, format = "latex",
+                                  signif.stars = TRUE,
+                                  tests = c("mean", "skewness", "kurtosis",
+                                            "ljung box",
+                                            "ljung box (residuals at seasonal lags)", 
+                                            "ljung box (squared residuals)",
+                                            "qs test on sa", "qs test on i",
+                                            "f-test on sa (seasonal dummies)", 
+                                            "f-test on i (seasonal dummies)",
+                                            "Residual seasonality (entire series)", 
+                                            "Residual seasonality (last 3 years)",
+                                            "f-test on sa (td)", "f-test on i (td)"),
+                                  digits = 3, decimal.mark = getOption("OutDec"),
+                                  booktabs = TRUE, ...){
+  print_diagnostics.SA(x, format = format,
+                       signif.stars = signif.stars,
+                       tests = tests, digits = digits, decimal.mark = decimal.mark,
+                       booktabs = booktabs)
+}
+#' @export
 print_diagnostics.SA <- function(x, format = "latex",
                                  signif.stars = TRUE,
                                  tests = c("mean", "skewness", "kurtosis",
@@ -79,8 +120,12 @@ get_tests <- function(x,
                                 "f-test on sa (td)", "f-test on i (td)")
 ){
   tests <- match.arg(tests, several.ok = TRUE)
-  tests_table <- data.frame(rbind(x$regarima$residuals.stat$tests, 
-                                  x$diagnostics$residuals_test))
+  if (inherits(x, "SA")) {
+    tests_table <- data.frame(rbind(x$regarima$residuals.stat$tests, 
+                                    x$diagnostics$residuals_test))
+  } else {
+    tests_table <- data.frame(x$residuals.stat$tests)
+  }
   as.matrix(tests_table[rownames(tests_table) %in% tests, 2, drop = FALSE])
 }
 format_table_tests <- function(x, format = "latex"){

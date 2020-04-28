@@ -45,20 +45,41 @@ print_preprocessing.SA <- function(x, format = "latex",
                               likelihood = TRUE,
                               arima = TRUE,
                               regression = TRUE, ...){
-  if(identical(format, "latex")){
-    print_preprocessing_latex(x$regarima, signif.stars = signif.stars,
-                              digits = digits, decimal.mark = decimal.mark,
-                              booktabs = booktabs, summary = summary,
-                              likelihood = likelihood,
-                              arima = arima, regression = regression, ...)
-  }
-  if(identical(format, "html")){
-    print_preprocessing_html(x$regarima, signif.stars = signif.stars,
-                             digits = digits, decimal.mark = decimal.mark,
-                             summary = summary,
-                             likelihood = likelihood,
-                             arima = arima, regression = regression, ...)
-  }
+  # if(identical(format, "latex")){
+  #   print_preprocessing_latex(x$regarima, signif.stars = signif.stars,
+  #                             digits = digits, decimal.mark = decimal.mark,
+  #                             booktabs = booktabs, summary = summary,
+  #                             likelihood = likelihood,
+  #                             arima = arima, regression = regression, ...)
+  # }
+  # if(identical(format, "html")){
+  #   print_preprocessing_html(x$regarima, signif.stars = signif.stars,
+  #                            digits = digits, decimal.mark = decimal.mark,
+  #                            summary = summary,
+  #                            likelihood = likelihood,
+  #                            arima = arima, regression = regression, ...)
+  # }
+  print_preprocessing(x$regarima, format = format, signif.stars = signif.stars,
+                      digits = digits, decimal.mark = decimal.mark,
+                      summary = summary,
+                      likelihood = likelihood,
+                      arima = arima, regression = regression, ...)
+}
+#' @export
+print_preprocessing.jSA <- function(x, format = "latex",
+                                    signif.stars = TRUE,
+                                    digits = 3, decimal.mark = getOption("OutDec"),
+                                    booktabs = TRUE,
+                                    summary = TRUE,
+                                    likelihood = TRUE,
+                                    arima = TRUE,
+                                    regression = TRUE, ...){
+  x <- RJDemetra::jSA2R(x)
+  print_preprocessing(x, format = format, signif.stars = signif.stars,
+                      digits = digits, decimal.mark = decimal.mark,
+                      summary = summary,
+                      likelihood = likelihood,
+                      arima = arima, regression = regression, ...)
 }
 #' @export
 print_preprocessing.regarima <- function(x, format = "latex",

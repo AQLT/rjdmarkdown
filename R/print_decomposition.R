@@ -21,6 +21,17 @@ print_decomposition <- function(x, format = "latex",
   UseMethod("print_decomposition", x)
 }
 #' @export
+print_decomposition.jSA <- function(x, format = "latex",
+                                   plot = TRUE,
+                                   digits = 3, decimal.mark = getOption("OutDec"),
+                                   booktabs = TRUE, ...){
+  x <- RJDemetra::jSA2R(x)
+  print_decomposition(x, format = format,
+                      plot = plot,
+                      digits = digits, decimal.mark = decimal.mark,
+                      booktabs = booktabs, ...)
+}
+#' @export
 print_decomposition.SA <- function(x, format = "latex",
                                    plot = TRUE,
                                    digits = 3, decimal.mark = getOption("OutDec"),
