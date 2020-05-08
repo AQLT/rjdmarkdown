@@ -7,10 +7,14 @@
 #' @param ... arguments passed to \code{\link[RJDemetra]{plot.decomposition_X11}} or \code{\link[RJDemetra]{plot.decomposition_SEATS}}.
 #' @examples 
 #' ipi <- RJDemetra::ipi_c_eu[, "FR"]
-#' sa_x13 <- RJDemetra::x13(ipi)
-#' sa_ts <- RJDemetra::tramoseats(ipi)
-#' print_decomposition(sa_x13, format = "latex")
+#' 
+#' jsa_x13 <- RJDemetra::jx13(ipi)
+#' print_decomposition(jsa_x13, format = "latex")
+#' 
+#' \donttest{
+#' sa_ts <- RJDemetra::jtramoseats(ipi)
 #' print_decomposition(sa_ts, format = "html")
+#' }
 #' 
 #' @importFrom kableExtra column_spec
 #' @export

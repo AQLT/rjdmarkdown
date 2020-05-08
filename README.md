@@ -6,6 +6,12 @@
 [![Travis Build
 Status](https://img.shields.io/travis/AQLT/rjdmarkdown.svg?logo=travis)](https://travis-ci.org/AQLT/rjdmarkdown)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/rjdmarkdown)](https://cran.r-project.org/package=rjdmarkdown)
+[![CRAN last
+release](http://www.r-pkg.org/badges/last-release/rjdmarkdown)](https://cran.r-project.org/package=rjdmarkdown)
+[![CRAN monthly
+downloads](http://cranlogs.r-pkg.org/badges/rjdmarkdown?color=lightgrey)](https://cran.r-project.org/package=rjdmarkdown)
+[![CRAN
+downloads](http://cranlogs.r-pkg.org/badges/grand-total/rjdmarkdown?color=lightgrey)](https://cran.r-project.org/package=rjdmarkdown)
 
 ## Overview
 

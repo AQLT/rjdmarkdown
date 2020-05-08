@@ -8,10 +8,14 @@
 #' 
 #' @examples 
 #' ipi <- RJDemetra::ipi_c_eu[, "FR"]
-#' sa_x13 <- RJDemetra::x13(ipi)
+#' 
+#' jsa_x13 <- RJDemetra::jx13(ipi)
+#' print_diagnostics(jsa_x13, format = "latex")
+#' 
+#' \donttest{
 #' sa_ts <- RJDemetra::tramoseats(ipi)
-#' print_diagnostics(sa_x13, format = "latex")
 #' print_diagnostics(sa_ts, format = "html")
+#' }
 #' @export
 print_diagnostics <- function(x, format = "latex",
                               signif.stars = TRUE,

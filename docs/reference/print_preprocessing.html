@@ -234,8 +234,8 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>ipi</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/RJDemetra/man/ipi_c_eu.html'>ipi_c_eu</a></span>[, <span class='st'>"FR"</span>]
-<span class='no'>sa_x13</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RJDemetra/man/x13.html'>x13</a></span>(<span class='no'>ipi</span>)
-<span class='no'>sa_ts</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RJDemetra/man/tramoseats.html'>tramoseats</a></span>(<span class='no'>ipi</span>)
+
+<span class='no'>sa_x13</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RJDemetra/man/x13.html'>jx13</a></span>(<span class='no'>ipi</span>)
 <span class='fu'>print_preprocessing</span>(<span class='no'>sa_x13</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>)</div><div class='output co'>#&gt; \underline{\textbf{Pre-processing (RegArima)}}
 #&gt; 
 #&gt; \underline{\textbf{Summary}}
@@ -305,7 +305,10 @@
 #&gt; \multicolumn{6}{l}{\textbf{Signif. codes: }0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1}\\
 #&gt; \end{tabular}
 #&gt; \end{table}
-#&gt; </div><div class='input'><span class='fu'>print_preprocessing</span>(<span class='no'>sa_ts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>)</div><div class='output co'>#&gt; &lt;u&gt;&lt;b&gt;Pre-processing (Tramo)&lt;/b&gt; &lt;/u&gt;
+#&gt; </div><div class='input'>
+<span class='co'># \donttest{</span>
+<span class='no'>sa_ts</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RJDemetra/man/tramoseats.html'>tramoseats</a></span>(<span class='no'>ipi</span>)
+<span class='fu'>print_preprocessing</span>(<span class='no'>sa_ts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>)</div><div class='output co'>#&gt; &lt;u&gt;&lt;b&gt;Pre-processing (Tramo)&lt;/b&gt; &lt;/u&gt;
 #&gt; 
 #&gt; &lt;u&gt;&lt;b&gt;Summary&lt;/b&gt;&lt;/u&gt;
 #&gt; 
@@ -486,7 +489,8 @@
 #&gt; &lt;tfoot&gt;&lt;tr&gt;&lt;td style="padding: 0; border: 0;" colspan="100%"&gt;
 #&gt; &lt;sup&gt;&lt;/sup&gt; &lt;b&gt;Signif. codes:&lt;/b&gt; 0 '\*\*\*' 0.001 '\*\*' 0.01 '\*' 0.05 '.' 0.1 ' ' 1&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
 #&gt; &lt;/table&gt;
-#&gt; </div><div class='input'>
+#&gt; </div><div class='input'># }
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

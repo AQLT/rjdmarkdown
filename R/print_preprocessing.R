@@ -15,10 +15,14 @@
 #' @param ... unused.
 #' @examples 
 #' ipi <- RJDemetra::ipi_c_eu[, "FR"]
-#' sa_x13 <- RJDemetra::x13(ipi)
-#' sa_ts <- RJDemetra::tramoseats(ipi)
+#' 
+#' sa_x13 <- RJDemetra::jx13(ipi)
 #' print_preprocessing(sa_x13, format = "latex")
+#' 
+#' \donttest{
+#' sa_ts <- RJDemetra::tramoseats(ipi)
 #' print_preprocessing(sa_ts, format = "html")
+#' }
 #' 
 #' @export
 #' @importFrom knitr kable

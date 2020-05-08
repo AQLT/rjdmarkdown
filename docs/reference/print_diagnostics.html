@@ -223,9 +223,9 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>ipi</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/RJDemetra/man/ipi_c_eu.html'>ipi_c_eu</a></span>[, <span class='st'>"FR"</span>]
-<span class='no'>sa_x13</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RJDemetra/man/x13.html'>x13</a></span>(<span class='no'>ipi</span>)
-<span class='no'>sa_ts</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RJDemetra/man/tramoseats.html'>tramoseats</a></span>(<span class='no'>ipi</span>)
-<span class='fu'>print_diagnostics</span>(<span class='no'>sa_x13</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>)</div><div class='output co'>#&gt; \begin{table}[H]
+
+<span class='no'>jsa_x13</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RJDemetra/man/x13.html'>jx13</a></span>(<span class='no'>ipi</span>)
+<span class='fu'>print_diagnostics</span>(<span class='no'>jsa_x13</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>)</div><div class='output co'>#&gt; \begin{table}[H]
 #&gt; 
 #&gt; \caption{\label{tab:}Diagnostics tests}
 #&gt; \centering
@@ -263,7 +263,10 @@
 #&gt; \hline
 #&gt; \multicolumn{3}{l}{\textbf{Signif. codes: }0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1}\\
 #&gt; \end{tabular}
-#&gt; \end{table}</div><div class='input'><span class='fu'>print_diagnostics</span>(<span class='no'>sa_ts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>)</div><div class='output co'>#&gt; &lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+#&gt; \end{table}</div><div class='input'>
+<span class='co'># \donttest{</span>
+<span class='no'>sa_ts</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RJDemetra/man/tramoseats.html'>tramoseats</a></span>(<span class='no'>ipi</span>)
+<span class='fu'>print_diagnostics</span>(<span class='no'>sa_ts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>)</div><div class='output co'>#&gt; &lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
 #&gt; &lt;caption&gt;Diagnostics tests&lt;/caption&gt;
 #&gt;  &lt;thead&gt;
 #&gt;   &lt;tr&gt;
@@ -346,7 +349,8 @@
 #&gt; &lt;/tbody&gt;
 #&gt; &lt;tfoot&gt;&lt;tr&gt;&lt;td style="padding: 0; border: 0;" colspan="100%"&gt;
 #&gt; &lt;sup&gt;&lt;/sup&gt; &lt;b&gt;Signif. codes:&lt;/b&gt; 0 '\*\*\*' 0.001 '\*\*' 0.01 '\*' 0.05 '.' 0.1 ' ' 1&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
-#&gt; &lt;/table&gt;</div></pre>
+#&gt; &lt;/table&gt;</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

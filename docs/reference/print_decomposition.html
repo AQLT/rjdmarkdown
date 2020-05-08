@@ -214,9 +214,9 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>ipi</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/RJDemetra/man/ipi_c_eu.html'>ipi_c_eu</a></span>[, <span class='st'>"FR"</span>]
-<span class='no'>sa_x13</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RJDemetra/man/x13.html'>x13</a></span>(<span class='no'>ipi</span>)
-<span class='no'>sa_ts</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RJDemetra/man/tramoseats.html'>tramoseats</a></span>(<span class='no'>ipi</span>)
-<span class='fu'>print_decomposition</span>(<span class='no'>sa_x13</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>)</div><div class='output co'>#&gt; \underline{\textbf{Decomposition (X-11)}}
+
+<span class='no'>jsa_x13</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RJDemetra/man/x13.html'>jx13</a></span>(<span class='no'>ipi</span>)
+<span class='fu'>print_decomposition</span>(<span class='no'>jsa_x13</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>)</div><div class='output co'>#&gt; \underline{\textbf{Decomposition (X-11)}}
 #&gt; 
 #&gt; Mode: additive
 #&gt; </div><div class='img'><img src='print_decomposition-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
@@ -266,7 +266,10 @@
 #&gt; Total &amp; 101.596\\
 #&gt; \bottomrule
 #&gt; \end{tabular}
-#&gt; \end{table}</div><div class='input'><span class='fu'>print_decomposition</span>(<span class='no'>sa_ts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>)</div><div class='output co'>#&gt; &lt;u&gt;&lt;b&gt;Decomposition (SEATS)&lt;/b&gt;&lt;/u&gt;
+#&gt; \end{table}</div><div class='input'>
+<span class='co'># \donttest{</span>
+<span class='no'>sa_ts</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RJDemetra/man/tramoseats.html'>jtramoseats</a></span>(<span class='no'>ipi</span>)
+<span class='fu'>print_decomposition</span>(<span class='no'>sa_ts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>)</div><div class='output co'>#&gt; &lt;u&gt;&lt;b&gt;Decomposition (SEATS)&lt;/b&gt;&lt;/u&gt;
 #&gt; 
 #&gt; Mode: multiplicative
 #&gt; </div><div class='img'><img src='print_decomposition-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
@@ -357,7 +360,8 @@
 #&gt;    &lt;td style="text-align:center;"&gt; 99.630 &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt; &lt;/tbody&gt;
-#&gt; &lt;/table&gt;</div><div class='input'>
+#&gt; &lt;/table&gt;</div><div class='input'># }
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
