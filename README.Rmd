@@ -56,3 +56,6 @@ print_preprocessing(mysa, format = "latex")
 print_decomposition(mysa, format = "latex")
 print_diagnostics(mysa, format = "latex")
 ```
+
+[<img src="https://user-images.githubusercontent.com/24825189/85861799-2ecd5080-b7c1-11ea-9ea0-70ffea5248b3.png" alt="LaTeX output" width="400" align="left" />](https://aqlt.github.io/rjdmarkdown/articles/rjdmarkdown-pdf.pdf)
+[<img src="https://user-images.githubusercontent.com/24825189/85861811-312faa80-b7c1-11ea-9105-e25d71c7df3e.png" alt="HTML output" width="400"  align="right"  />](https://aqlt.github.io/rjdmarkdown/articles/rjdmarkdown-html.html)
