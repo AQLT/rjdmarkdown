@@ -24,6 +24,9 @@ rjdmarkdown relies on RJDemetra that requires Java SE 8 or later
 version.
 
 ``` r
+# Install release version from CRAN
+install.packages("rjdmarkdown")
+
 # Install development version from GitHub
 # install.packages("devtools")
 devtools::install_github("AQLT/rjdmarkdown")
