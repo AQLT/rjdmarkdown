@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="Print the decomposition — print_decomposition" />
 <meta property="og:description" content="Function to print the decomposition model" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjdmarkdown</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -98,6 +101,9 @@
       <a href="../articles/rjdmarkdown-pdf.pdf">rjdmarkdown with PDF output</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -170,7 +176,7 @@
 
     <pre class="usage"><span class='fu'>print_decomposition</span>(
   <span class='no'>x</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw pkg'>knitr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/knitr/man/opts_knit.html'>opts_knit</a></span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"rmarkdown.pandoc.to"</span>),
   <span class='kw'>plot</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>,
   <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"OutDec"</span>),
@@ -218,7 +224,7 @@
 <span class='no'>jsa_x13</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RJDemetra</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RJDemetra/man/x13.html'>jx13</a></span>(<span class='no'>ipi</span>)
 <span class='fu'>print_decomposition</span>(<span class='no'>jsa_x13</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>)</div><div class='output co'>#&gt; \underline{\textbf{Decomposition (X-11)}}
 #&gt; 
-#&gt; Mode: additive
+#&gt; Mode: multiplicative
 #&gt; </div><div class='img'><img src='print_decomposition-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
 #&gt; 
 #&gt; \begin{table}[H]
@@ -229,21 +235,21 @@
 #&gt; \toprule
 #&gt;   &amp; Value &amp; Description\\
 #&gt; \midrule
-#&gt; M-1 &amp; 0.061 &amp; The relative contribution of the irregular over three months span\\
-#&gt; M-2 &amp; 0.034 &amp; The relative contribution of the irregular component to the stationary portion of the variance\\
-#&gt; M-3 &amp; 0.840 &amp; The amount of period to period change in the irregular component as compared to the amount of period to period change in the trend\\
-#&gt; M-4 &amp; 0.420 &amp; The amount of autocorrelation in the irregular as described by the average duration of run\\
-#&gt; M-5 &amp; 0.697 &amp; The number of periods it takes the change in the trend to surpass the amount of change in the irregular\\
+#&gt; M-1 &amp; 0.097 &amp; The relative contribution of the irregular over three months span\\
+#&gt; M-2 &amp; 0.053 &amp; The relative contribution of the irregular component to the stationary portion of the variance\\
+#&gt; M-3 &amp; 0.995 &amp; The amount of period to period change in the irregular component as compared to the amount of period to period change in the trend\\
+#&gt; M-4 &amp; 0.421 &amp; The amount of autocorrelation in the irregular as described by the average duration of run\\
+#&gt; M-5 &amp; 0.950 &amp; The number of periods it takes the change in the trend to surpass the amount of change in the irregular\\
 #&gt; \addlinespace
-#&gt; M-6 &amp; 0.236 &amp; The amount of year to year change in the irregular as compared to the amount of year to year change in the seasonal\\
-#&gt; M-7 &amp; 0.075 &amp; The amount of moving seasonality present relative to the amount of stable seasonality\\
-#&gt; M-8 &amp; 0.206 &amp; The size of the fluctuations in the seasonal component throughout the whole series\\
-#&gt; M-9 &amp; 0.055 &amp; The average linear movement in the seasonal component throughout the whole series\\
-#&gt; M-10 &amp; 0.166 &amp; The size of the fluctuations in the seasonal component in the recent years\\
+#&gt; M-6 &amp; 0.154 &amp; The amount of year to year change in the irregular as compared to the amount of year to year change in the seasonal\\
+#&gt; M-7 &amp; 0.074 &amp; The amount of moving seasonality present relative to the amount of stable seasonality\\
+#&gt; M-8 &amp; 0.211 &amp; The size of the fluctuations in the seasonal component throughout the whole series\\
+#&gt; M-9 &amp; 0.064 &amp; The average linear movement in the seasonal component throughout the whole series\\
+#&gt; M-10 &amp; 0.267 &amp; The size of the fluctuations in the seasonal component in the recent years\\
 #&gt; \addlinespace
-#&gt; M-11 &amp; 0.137 &amp; The average linear movement in the seasonal component in the recent years\\
-#&gt; Q &amp; 0.272 &amp; \\
-#&gt; Q-M2 &amp; 0.301 &amp; \\
+#&gt; M-11 &amp; 0.250 &amp; The average linear movement in the seasonal component in the recent years\\
+#&gt; Q &amp; 0.322 &amp; \\
+#&gt; Q-M2 &amp; 0.355 &amp; \\
 #&gt; \bottomrule
 #&gt; \multicolumn{3}{l}{\textbf{Final filters}: M3x5, Henderson-13 terms}\\
 #&gt; \end{tabular}
@@ -257,13 +263,13 @@
 #&gt; \toprule
 #&gt;   &amp; Component\\
 #&gt; \midrule
-#&gt; Cycle &amp; 1.646\\
-#&gt; Seasonal &amp; 49.667\\
-#&gt; Irregular &amp; 0.411\\
-#&gt; TD \&amp; Hol. &amp; 0.057\\
-#&gt; Others &amp; 49.814\\
+#&gt; Cycle &amp; 1.941\\
+#&gt; Seasonal &amp; 62.123\\
+#&gt; Irregular &amp; 0.842\\
+#&gt; TD \&amp; Hol. &amp; 2.428\\
+#&gt; Others &amp; 32.787\\
 #&gt; \addlinespace
-#&gt; Total &amp; 101.596\\
+#&gt; Total &amp; 100.121\\
 #&gt; \bottomrule
 #&gt; \end{tabular}
 #&gt; \end{table}</div><div class='input'>
@@ -276,23 +282,23 @@
 #&gt; 
 #&gt; &lt;b&gt;Model&lt;/b&gt;
 #&gt; 
-#&gt; AR: $1+0.352B+0.134B^{2}$
+#&gt; AR: $1+0.386B+0.243B^{2}$
 #&gt; 
 #&gt; D: $1-B-B^{12}+B^{13}$
 #&gt; 
-#&gt; MA: $1-0.187B-0.611B^{12}+0.114B^{13}$
+#&gt; MA: $1-0.713B^{12}$
 #&gt; 
 #&gt; 
 #&gt; 
 #&gt; &lt;b&gt;SA&lt;/b&gt;
 #&gt; 
-#&gt; 
+#&gt; AR: $1+0.386B+0.243B^{2}$
 #&gt; 
 #&gt; D: $1-2.000B+B^{2}$
 #&gt; 
-#&gt; MA: $1-1.314B+0.340B^{2}$
+#&gt; MA: $1-0.975B+0.004B^{2}-0.003B^{3}+0.002B^{4}$
 #&gt; 
-#&gt; Innovation variance:  0.467 
+#&gt; Innovation variance:  0.747 
 #&gt; 
 #&gt; &lt;b&gt;Trend&lt;/b&gt;
 #&gt; 
@@ -300,19 +306,29 @@
 #&gt; 
 #&gt; D: $1-2.000B+B^{2}$
 #&gt; 
-#&gt; MA: $1+0.040B-0.960B^{2}$
+#&gt; MA: $1+0.028B-0.972B^{2}$
 #&gt; 
-#&gt; Innovation variance:  0.049 
+#&gt; Innovation variance:  0.070 
 #&gt; 
 #&gt; &lt;b&gt;Seasonal&lt;/b&gt;
 #&gt; 
-#&gt; AR: $1+0.352B+0.134B^{2}$
+#&gt; 
 #&gt; 
 #&gt; D: $1+B+B^{2}+B^{3}+B^{4}+B^{5}+B^{6}+B^{7}+B^{8}+B^{9}+B^{10}+B^{11}$
 #&gt; 
-#&gt; MA: $1+0.718B+0.461B^{2}+0.310B^{3}+0.132B^{4}-0.049B^{5}-0.217B^{6}-0.355B^{7}-0.445B^{8}-0.470B^{9}-0.377B^{10}-0.166B^{11}-0.411B^{12}-0.133B^{13}$
+#&gt; MA: $1+1.353B+1.194B^{2}+1.260B^{3}+1.124B^{4}+0.886B^{5}+0.683B^{6}+0.440B^{7}+0.272B^{8}+0.020B^{9}-0.055B^{10}-0.222B^{11}$
 #&gt; 
-#&gt; Innovation variance:  0.160 
+#&gt; Innovation variance:  0.030 
+#&gt; 
+#&gt; &lt;b&gt;Transitory&lt;/b&gt;
+#&gt; 
+#&gt; AR: $1+0.386B+0.243B^{2}$
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; MA: $1-0.316B-0.684B^{2}$
+#&gt; 
+#&gt; Innovation variance:  0.052 
 #&gt; 
 #&gt; &lt;b&gt;Irregular&lt;/b&gt;
 #&gt; 
@@ -322,7 +338,7 @@
 #&gt; 
 #&gt; 
 #&gt; 
-#&gt; Innovation variance:  0.206 
+#&gt; Innovation variance:  0.222 
 #&gt; 
 #&gt; 
 #&gt; 
@@ -337,40 +353,37 @@
 #&gt; &lt;tbody&gt;
 #&gt;   &lt;tr&gt;
 #&gt;    &lt;td style="text-align:left;"&gt; Cycle &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 2.181 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 5.694 &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
 #&gt;    &lt;td style="text-align:left;"&gt; Seasonal &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 66.768 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 88.840 &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
 #&gt;    &lt;td style="text-align:left;"&gt; Irregular &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.106 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.820 &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
 #&gt;    &lt;td style="text-align:left;"&gt; TD &amp;amp; Hol. &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.069 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 3.412 &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
 #&gt;    &lt;td style="text-align:left;"&gt; Others &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 30.507 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.469 &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
 #&gt;    &lt;td style="text-align:left;"&gt; Total &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 99.630 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 99.234 &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt; &lt;/tbody&gt;
 #&gt; &lt;/table&gt;</div><div class='input'># }
 
 </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -381,7 +394,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

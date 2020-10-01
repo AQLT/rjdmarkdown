@@ -30,7 +30,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom stats time printCoefmat
 #' @importFrom graphics plot
-print_preprocessing <- function(x, format = "latex",
+print_preprocessing <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                                 signif.stars = TRUE,
                            digits = 3, decimal.mark = getOption("OutDec"),
                            booktabs = TRUE,
@@ -41,7 +41,7 @@ print_preprocessing <- function(x, format = "latex",
   UseMethod("print_preprocessing", x)
 }
 #' @export
-print_preprocessing.SA <- function(x, format = "latex",
+print_preprocessing.SA <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                                    signif.stars = TRUE,
                               digits = 3, decimal.mark = getOption("OutDec"),
                               booktabs = TRUE,
@@ -49,6 +49,8 @@ print_preprocessing.SA <- function(x, format = "latex",
                               likelihood = TRUE,
                               arima = TRUE,
                               regression = TRUE, ...){
+  if(is.null(format))
+    format <- "latex"
   # if(identical(format, "latex")){
   #   print_preprocessing_latex(x$regarima, signif.stars = signif.stars,
   #                             digits = digits, decimal.mark = decimal.mark,
@@ -70,7 +72,7 @@ print_preprocessing.SA <- function(x, format = "latex",
                       arima = arima, regression = regression, ...)
 }
 #' @export
-print_preprocessing.jSA <- function(x, format = "latex",
+print_preprocessing.jSA <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                                     signif.stars = TRUE,
                                     digits = 3, decimal.mark = getOption("OutDec"),
                                     booktabs = TRUE,
@@ -78,6 +80,8 @@ print_preprocessing.jSA <- function(x, format = "latex",
                                     likelihood = TRUE,
                                     arima = TRUE,
                                     regression = TRUE, ...){
+  if(is.null(format))
+    format <- "latex"
   x <- RJDemetra::jSA2R(x)
   print_preprocessing(x, format = format, signif.stars = signif.stars,
                       digits = digits, decimal.mark = decimal.mark,
@@ -86,7 +90,7 @@ print_preprocessing.jSA <- function(x, format = "latex",
                       arima = arima, regression = regression, ...)
 }
 #' @export
-print_preprocessing.regarima <- function(x, format = "latex",
+print_preprocessing.regarima <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                                          signif.stars = TRUE,
                                     digits = 3, decimal.mark = getOption("OutDec"),
                                     booktabs = TRUE,
@@ -94,6 +98,8 @@ print_preprocessing.regarima <- function(x, format = "latex",
                                     likelihood = TRUE,
                                     arima = TRUE,
                                     regression = TRUE, ...){
+  if(is.null(format))
+    format <- "latex"
   if(identical(format, "latex")){
     print_preprocessing_latex(x, signif.stars = signif.stars,
                               digits = digits, decimal.mark = decimal.mark,

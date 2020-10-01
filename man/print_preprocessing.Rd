@@ -6,7 +6,7 @@
 \usage{
 print_preprocessing(
   x,
-  format = "latex",
+  format = knitr::opts_knit$get("rmarkdown.pandoc.to"),
   signif.stars = TRUE,
   digits = 3,
   decimal.mark = getOption("OutDec"),

@@ -6,7 +6,7 @@
 \usage{
 print_diagnostics(
   x,
-  format = "latex",
+  format = knitr::opts_knit$get("rmarkdown.pandoc.to"),
   signif.stars = TRUE,
   tests = c("mean", "skewness", "kurtosis", "ljung box",
     "ljung box (residuals at seasonal lags)", "ljung box (squared residuals)",

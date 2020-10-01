@@ -18,17 +18,19 @@
 #' 
 #' @importFrom kableExtra column_spec
 #' @export
-print_decomposition <- function(x, format = "latex",
+print_decomposition <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                                 plot = TRUE,
                                 digits = 3, decimal.mark = getOption("OutDec"),
                                 booktabs = TRUE, ...){
   UseMethod("print_decomposition", x)
 }
 #' @export
-print_decomposition.jSA <- function(x, format = "latex",
+print_decomposition.jSA <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                                    plot = TRUE,
                                    digits = 3, decimal.mark = getOption("OutDec"),
                                    booktabs = TRUE, ...){
+  if(is.null(format))
+    format <- "latex"
   x <- RJDemetra::jSA2R(x)
   print_decomposition(x, format = format,
                       plot = plot,
@@ -36,10 +38,12 @@ print_decomposition.jSA <- function(x, format = "latex",
                       booktabs = booktabs, ...)
 }
 #' @export
-print_decomposition.SA <- function(x, format = "latex",
+print_decomposition.SA <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                                    plot = TRUE,
                                    digits = 3, decimal.mark = getOption("OutDec"),
                                    booktabs = TRUE, ...){
+  if(is.null(format))
+    format <- "latex"
   print_decomposition(x$decomposition, format = format,
                       plot = plot,
                       digits = digits, decimal.mark = decimal.mark,
@@ -51,10 +55,12 @@ print_decomposition.SA <- function(x, format = "latex",
                       booktabs = booktabs, ...)
 }
 #' @export
-print_decomposition.decomposition_X11 <- function(x, format = "latex",
+print_decomposition.decomposition_X11 <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                                                   plot = TRUE,
                                          digits = 3, decimal.mark = getOption("OutDec"),
                                          booktabs = TRUE, ...){
+  if(is.null(format))
+    format <- "latex"
 
   legend_mstats <- data.frame(Description = c("The relative contribution of the irregular over three months span", 
                                               "The relative contribution of the irregular component to the stationary portion of the variance", 
@@ -122,12 +128,13 @@ print_decomposition.decomposition_X11 <- function(x, format = "latex",
   }
 }
 #' @export
-print_decomposition.decomposition_SEATS <- function(x, format = "latex",
+print_decomposition.decomposition_SEATS <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                                                     plot = TRUE, 
                                                   digits = 2,
                                                   decimal.mark = getOption("OutDec"),
                                                   booktabs = TRUE, ...){
-  
+  if(is.null(format))
+    format <- "latex"
   
   cat(title("Decomposition (SEATS)", format = format))
   cat("\n\n")
@@ -196,11 +203,13 @@ print_formula <- function(x, var, digits = 2, decimal.mark = getOption("OutDec")
   cat(var,": ",polynome_formula,sep = "")
 }
 #' @export
-print_decomposition.diagnostics <- function(x, format = "latex",
+print_decomposition.diagnostics <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                                                     plot = TRUE, 
                                                     digits = 2,
                                                     decimal.mark = getOption("OutDec"),
                                                     booktabs = TRUE, ...){
+  if(is.null(format))
+    format <- "latex"
   table <- kable(x$variance_decomposition, format = format, digits = digits,
                  escape = TRUE,
                  caption = "Relative contribution of the components to the stationary portion of the variance in the original series, after the removal of the long term trend",

@@ -6,7 +6,7 @@
 \usage{
 print_decomposition(
   x,
-  format = "latex",
+  format = knitr::opts_knit$get("rmarkdown.pandoc.to"),
   plot = TRUE,
   digits = 3,
   decimal.mark = getOption("OutDec"),

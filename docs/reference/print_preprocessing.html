@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="Print the pre-processing model — print_preprocessing" />
 <meta property="og:description" content="Function to print the pre-processing model" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rjdmarkdown</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -98,6 +101,9 @@
       <a href="../articles/rjdmarkdown-pdf.pdf">rjdmarkdown with PDF output</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -170,7 +176,7 @@
 
     <pre class="usage"><span class='fu'>print_preprocessing</span>(
   <span class='no'>x</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"latex"</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw pkg'>knitr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/knitr/man/opts_knit.html'>opts_knit</a></span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"rmarkdown.pandoc.to"</span>),
   <span class='kw'>signif.stars</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>,
   <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"OutDec"</span>),
@@ -242,9 +248,11 @@
 #&gt; 
 #&gt; 
 #&gt; 
-#&gt; 336 observations
+#&gt; 360 observations
 #&gt; 
-#&gt; Trading days effect (7 variables)
+#&gt; Series has been log-transformed
+#&gt; 
+#&gt; Trading days effect (6 variables)
 #&gt; 
 #&gt; Easter [1] detected
 #&gt; 
@@ -252,13 +260,13 @@
 #&gt; 
 #&gt; \underline{\textbf{Likelihood statistics}}
 #&gt; 
-#&gt; Number of effective observations = 323
+#&gt; Number of effective observations = 347
 #&gt; 
-#&gt; Number of estimated parameters = 14
+#&gt; Number of estimated parameters = 15
 #&gt; 
-#&gt; Loglikelihood = -624.720, AICc = 1278.803, BICc = 1.252
+#&gt; Loglikelihood = 853.667, AICc = 1529.651, BICc = -7.547
 #&gt; 
-#&gt; Standard error of the regression (ML estimate) = 1.665
+#&gt; Standard error of the regression (ML estimate) = 0.020
 #&gt; 
 #&gt; \underline{\textbf{ARIMA model}}
 #&gt; 
@@ -270,11 +278,13 @@
 #&gt; \toprule
 #&gt;   &amp; Coefficients &amp; Std. Error &amp; T-stat &amp; $\mathbb P (&gt; \lvert t \rvert)$ &amp; \\
 #&gt; \midrule
-#&gt; Theta(1) &amp; -0.527 &amp; 0.048 &amp; -10.922 &amp; 0.000 &amp; ***\\
-#&gt; BTheta(1) &amp; -0.487 &amp; 0.051 &amp; -9.585 &amp; 0.000 &amp; ***\\
+#&gt; Phi(1) &amp; 0.026 &amp; 0.118 &amp; 0.218 &amp; 0.827 &amp; \\
+#&gt; Phi(2) &amp; 0.159 &amp; 0.078 &amp; 2.039 &amp; 0.042 &amp; *\\
+#&gt; Theta(1) &amp; -0.517 &amp; 0.113 &amp; -4.589 &amp; 0.000 &amp; ***\\
+#&gt; BTheta(1) &amp; -0.703 &amp; 0.041 &amp; -17.093 &amp; 0.000 &amp; ***\\
 #&gt; \bottomrule
 #&gt; \multicolumn{6}{l}{\textbf{Signif. codes: }0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1}\\
-#&gt; \multicolumn{6}{l}{ARIMA (0,1,1)(0,1,1)}\\
+#&gt; \multicolumn{6}{l}{ARIMA (2,1,1)(0,1,1)}\\
 #&gt; \end{tabular}
 #&gt; \end{table}
 #&gt; 
@@ -288,19 +298,17 @@
 #&gt; \toprule
 #&gt;   &amp; Coefficients &amp; Std. Error &amp; T-stat &amp; $\mathbb P (&gt; \lvert t \rvert)$ &amp; \\
 #&gt; \midrule
-#&gt; Monday &amp; -0.134 &amp; 0.164 &amp; -0.818 &amp; 0.414 &amp; \\
-#&gt; Tuesday &amp; -0.002 &amp; 0.163 &amp; -0.015 &amp; 0.988 &amp; \\
-#&gt; Wednesday &amp; 0.242 &amp; 0.163 &amp; 1.479 &amp; 0.140 &amp; \\
-#&gt; Thursday &amp; -0.531 &amp; 0.163 &amp; -3.252 &amp; 0.001 &amp; **\\
-#&gt; Friday &amp; 0.432 &amp; 0.164 &amp; 2.640 &amp; 0.009 &amp; **\\
+#&gt; Monday &amp; 0.005 &amp; 0.002 &amp; 2.309 &amp; 0.022 &amp; *\\
+#&gt; Tuesday &amp; 0.008 &amp; 0.002 &amp; 3.895 &amp; 0.000 &amp; ***\\
+#&gt; Wednesday &amp; 0.011 &amp; 0.002 &amp; 4.903 &amp; 0.000 &amp; ***\\
+#&gt; Thursday &amp; 0.002 &amp; 0.002 &amp; 0.955 &amp; 0.340 &amp; \\
+#&gt; Friday &amp; 0.008 &amp; 0.002 &amp; 3.826 &amp; 0.000 &amp; ***\\
 #&gt; \addlinespace
-#&gt; Saturday &amp; 0.153 &amp; 0.163 &amp; 0.936 &amp; 0.350 &amp; \\
-#&gt; Leap year &amp; -0.046 &amp; 0.501 &amp; -0.092 &amp; 0.927 &amp; \\
-#&gt; Easter [1] &amp; -1.094 &amp; 0.335 &amp; -3.269 &amp; 0.001 &amp; **\\
-#&gt; LS (11-2008) &amp; -8.442 &amp; 1.307 &amp; -6.460 &amp; 0.000 &amp; ***\\
-#&gt; LS (1-2009) &amp; -7.274 &amp; 1.306 &amp; -5.568 &amp; 0.000 &amp; ***\\
-#&gt; \addlinespace
-#&gt; LS (5-2008) &amp; -5.020 &amp; 1.257 &amp; -3.993 &amp; 0.000 &amp; ***\\
+#&gt; Saturday &amp; -0.016 &amp; 0.002 &amp; -7.599 &amp; 0.000 &amp; ***\\
+#&gt; Easter [1] &amp; -0.021 &amp; 0.004 &amp; -4.979 &amp; 0.000 &amp; ***\\
+#&gt; AO (5-2011) &amp; 0.128 &amp; 0.017 &amp; 7.447 &amp; 0.000 &amp; ***\\
+#&gt; LS (11-2008) &amp; -0.087 &amp; 0.017 &amp; -5.131 &amp; 0.000 &amp; ***\\
+#&gt; LS (1-2009) &amp; -0.068 &amp; 0.017 &amp; -4.037 &amp; 0.000 &amp; ***\\
 #&gt; \bottomrule
 #&gt; \multicolumn{6}{l}{\textbf{Signif. codes: }0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1}\\
 #&gt; \end{tabular}
@@ -314,25 +322,25 @@
 #&gt; 
 #&gt; 
 #&gt; 
-#&gt; 336 observations
+#&gt; 360 observations
 #&gt; 
 #&gt; Series has been log-transformed
 #&gt; 
-#&gt; Trading days effect (6 variables)
+#&gt; Trading days effect (2 variables)
 #&gt; 
 #&gt; Easter [6] detected
 #&gt; 
-#&gt; 3 detected outliers
+#&gt; 2 detected outliers
 #&gt; 
 #&gt; &lt;u&gt;&lt;b&gt;Likelihood statistics&lt;/b&gt;&lt;/u&gt;
 #&gt; 
-#&gt; Number of effective observations = 323
+#&gt; Number of effective observations = 347
 #&gt; 
-#&gt; Number of estimated parameters = 15
+#&gt; Number of estimated parameters = 9
 #&gt; 
-#&gt; Loglikelihood = 875.751, AICc = 1262.750, BICc = -8.028
+#&gt; Loglikelihood = 831.828, AICc = 1560.412, BICc = -7.523
 #&gt; 
-#&gt; Standard error of the regression (ML estimate) = 0.016
+#&gt; Standard error of the regression (ML estimate) = 0.022
 #&gt; 
 #&gt; &lt;u&gt;&lt;b&gt;ARIMA model&lt;/b&gt;&lt;/u&gt;
 #&gt; 
@@ -351,33 +359,25 @@
 #&gt; &lt;tbody&gt;
 #&gt;   &lt;tr&gt;
 #&gt;    &lt;td style="text-align:left;"&gt; Phi(1) &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.352 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.256 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 1.376 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.170 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.386 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.053 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 7.287 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.000 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; *** &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
 #&gt;    &lt;td style="text-align:left;"&gt; Phi(2) &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.134 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.130 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 1.026 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.305 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-#&gt;   &lt;/tr&gt;
-#&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; Theta(1) &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -0.187 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.256 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -0.728 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.467 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.243 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.053 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 4.579 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.000 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; *** &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
 #&gt;    &lt;td style="text-align:left;"&gt; BTheta(1) &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -0.611 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.047 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -13.010 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; -0.713 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.040 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; -17.672 &lt;/td&gt;
 #&gt;    &lt;td style="text-align:center;"&gt; 0.000 &lt;/td&gt;
 #&gt;    &lt;td style="text-align:center;"&gt; *** &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
@@ -386,7 +386,7 @@
 #&gt; &lt;tr&gt;&lt;td style="padding: 0; border: 0;" colspan="100%"&gt;
 #&gt; &lt;sup&gt;&lt;/sup&gt; &lt;b&gt;Signif. codes:&lt;/b&gt; 0 '\*\*\*' 0.001 '\*\*' 0.01 '\*' 0.05 '.' 0.1 ' ' 1&lt;/td&gt;&lt;/tr&gt;
 #&gt; &lt;tr&gt;&lt;td style="padding: 0; border: 0;" colspan="100%"&gt;
-#&gt; &lt;sup&gt;&lt;/sup&gt; ARIMA (2,1,1)(0,1,1)&lt;/td&gt;&lt;/tr&gt;
+#&gt; &lt;sup&gt;&lt;/sup&gt; ARIMA (2,1,0)(0,1,1)&lt;/td&gt;&lt;/tr&gt;
 #&gt; &lt;/tfoot&gt;
 #&gt; &lt;/table&gt;
 #&gt; 
@@ -406,82 +406,42 @@
 #&gt;  &lt;/thead&gt;
 #&gt; &lt;tbody&gt;
 #&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; Monday &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -0.002 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.002 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -1.385 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.167 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-#&gt;   &lt;/tr&gt;
-#&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; Tuesday &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.001 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.002 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.353 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.724 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-#&gt;   &lt;/tr&gt;
-#&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; Wednesday &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.003 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.002 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 1.938 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.054 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; . &lt;/td&gt;
-#&gt;   &lt;/tr&gt;
-#&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; Thursday &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -0.005 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.002 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -3.342 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.001 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; Week days &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.007 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.000 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 23.891 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.000 &lt;/td&gt;
 #&gt;    &lt;td style="text-align:center;"&gt; *** &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; Friday &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.003 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.002 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 2.010 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.045 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; * &lt;/td&gt;
-#&gt;   &lt;/tr&gt;
-#&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; Saturday &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.002 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.002 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 1.128 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.260 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-#&gt;   &lt;/tr&gt;
-#&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; Easter [6] &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -0.011 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.003 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -3.201 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.002 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; Leap year &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.022 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.007 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 3.238 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.001 &lt;/td&gt;
 #&gt;    &lt;td style="text-align:center;"&gt; ** &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; LS (11-2008) &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -0.079 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.013 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -6.143 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; Easter [6] &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; -0.021 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.004 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; -5.118 &lt;/td&gt;
 #&gt;    &lt;td style="text-align:center;"&gt; 0.000 &lt;/td&gt;
 #&gt;    &lt;td style="text-align:center;"&gt; *** &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; LS (1-2009) &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -0.071 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.013 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; -5.509 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; AO (5-2011) &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.129 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.017 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 7.640 &lt;/td&gt;
 #&gt;    &lt;td style="text-align:center;"&gt; 0.000 &lt;/td&gt;
 #&gt;    &lt;td style="text-align:center;"&gt; *** &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
 #&gt;   &lt;tr&gt;
-#&gt;    &lt;td style="text-align:left;"&gt; AO (8-2001) &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.045 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 0.013 &lt;/td&gt;
-#&gt;    &lt;td style="text-align:center;"&gt; 3.498 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:left;"&gt; AO (5-2000) &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.058 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 0.017 &lt;/td&gt;
+#&gt;    &lt;td style="text-align:center;"&gt; 3.409 &lt;/td&gt;
 #&gt;    &lt;td style="text-align:center;"&gt; 0.001 &lt;/td&gt;
 #&gt;    &lt;td style="text-align:center;"&gt; *** &lt;/td&gt;
 #&gt;   &lt;/tr&gt;
@@ -493,13 +453,10 @@
 
 </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -510,7 +467,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

@@ -17,7 +17,7 @@
 #' print_diagnostics(sa_ts, format = "html")
 #' }
 #' @export
-print_diagnostics <- function(x, format = "latex",
+print_diagnostics <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                               signif.stars = TRUE,
                               tests = c("mean", "skewness", "kurtosis",
                                         "ljung box",
@@ -34,7 +34,7 @@ print_diagnostics <- function(x, format = "latex",
   UseMethod("print_diagnostics", x)
 }
 #' @export
-print_diagnostics.jSA <- function(x, format = "latex",
+print_diagnostics.jSA <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                                  signif.stars = TRUE,
                                  tests = c("mean", "skewness", "kurtosis",
                                            "ljung box",
@@ -48,6 +48,8 @@ print_diagnostics.jSA <- function(x, format = "latex",
                                            "f-test on sa (td)", "f-test on i (td)"),
                                  digits = 3, decimal.mark = getOption("OutDec"),
                                  booktabs = TRUE, ...){
+  if(is.null(format))
+    format <- "latex"
   x <- RJDemetra::jSA2R(x)
   print_diagnostics(x, format = format,
                     signif.stars = signif.stars,
@@ -55,7 +57,7 @@ print_diagnostics.jSA <- function(x, format = "latex",
                     booktabs = booktabs)
 }
 #' @export
-print_diagnostics.regarima <- function(x, format = "latex",
+print_diagnostics.regarima <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                                   signif.stars = TRUE,
                                   tests = c("mean", "skewness", "kurtosis",
                                             "ljung box",
@@ -69,13 +71,15 @@ print_diagnostics.regarima <- function(x, format = "latex",
                                             "f-test on sa (td)", "f-test on i (td)"),
                                   digits = 3, decimal.mark = getOption("OutDec"),
                                   booktabs = TRUE, ...){
+  if(is.null(format))
+    format <- "latex"
   print_diagnostics.SA(x, format = format,
                        signif.stars = signif.stars,
                        tests = tests, digits = digits, decimal.mark = decimal.mark,
                        booktabs = booktabs)
 }
 #' @export
-print_diagnostics.SA <- function(x, format = "latex",
+print_diagnostics.SA <- function(x, format = knitr::opts_knit$get('rmarkdown.pandoc.to'),
                                  signif.stars = TRUE,
                                  tests = c("mean", "skewness", "kurtosis",
                                            "ljung box",
@@ -89,6 +93,8 @@ print_diagnostics.SA <- function(x, format = "latex",
                                            "f-test on sa (td)", "f-test on i (td)"),
                                  digits = 3, decimal.mark = getOption("OutDec"),
                                  booktabs = TRUE, ...){
+  if(is.null(format))
+    format <- "latex"
   tests_table <- get_tests(x, tests = tests)
   if(nrow(tests_table) == 0)
     return(NULL)
