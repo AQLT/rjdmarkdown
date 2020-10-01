@@ -8,4 +8,7 @@ r:
 - release
 - devel
 
+before_install:
+  - sudo $(which R) CMD javareconf
+  
 r_check_args: --as-cran --run-donttest
