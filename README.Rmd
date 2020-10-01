@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-rjdmarkdown gives a set of functions to print nicely your models created by [RJDemetra](https://github.com/nbbrd/rjdemetra).
+rjdmarkdown gives a set of functions to print nicely your models created by [RJDemetra](https://github.com/jdemetra/rjdemetra).
 
 ## Installation
 

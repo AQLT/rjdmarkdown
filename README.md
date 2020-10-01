@@ -16,7 +16,7 @@ downloads](http://cranlogs.r-pkg.org/badges/grand-total/rjdmarkdown?color=lightg
 ## Overview
 
 rjdmarkdown gives a set of functions to print nicely your models created
-by [RJDemetra](https://github.com/nbbrd/rjdemetra).
+by [RJDemetra](https://github.com/jdemetra/rjdemetra).
 
 ## Installation
 
