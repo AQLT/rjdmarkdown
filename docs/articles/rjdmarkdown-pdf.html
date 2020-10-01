@@ -62,7 +62,7 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../news/index.html">News</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -1458,10 +1458,11 @@ f-test on i (td)
 <span class="fu"><a href="../reference/create_rmd.html">create_rmd</a></span>(<span class="no">sa_ts</span>, <span class="no">output_file</span>, <span class="kw">output_format</span> <span class="kw">=</span> <span class="st">"pdf_document"</span>,
            <span class="kw">preprocessing_fun</span> <span class="kw">=</span> <span class="no">preprocessing_customized</span>,
            <span class="kw">decomposition_fun</span> <span class="kw">=</span> <span class="no">decomposition_customized</span>,
-           <span class="kw">knitr_chunk_opts</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">fig.pos</span> <span class="kw">=</span> <span class="st">"h"</span>, <span class="kw">results</span> <span class="kw">=</span> <span class="st">"asis"</span>,
-                                   <span class="kw">fig.cap</span> <span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Seasonal adjustment of the French industrial production index"</span>,
-                                               <span class="st">"S-I Ratio"</span>),
-                                   <span class="kw">warning</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">message</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">echo</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+           <span class="kw">knitr_chunk_opts</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
+             <span class="kw">fig.pos</span> <span class="kw">=</span> <span class="st">"h"</span>, <span class="kw">results</span> <span class="kw">=</span> <span class="st">"asis"</span>,
+             <span class="kw">fig.cap</span> <span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Seasonal adjustment of the French industrial production index"</span>,
+                        <span class="st">"S-I Ratio"</span>),
+             <span class="kw">warning</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">message</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">echo</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
            )
 <span class="co"># To open the file:</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html">browseURL</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span>(<span class="st">".Rmd"</span>,<span class="st">".pdf"</span>, <span class="no">output_file</span>, <span class="kw">fixed</span><span class="kw">=</span> <span class="fl">TRUE</span>))</pre></body></html></div>

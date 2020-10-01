@@ -18,6 +18,9 @@ navbar:
     reference:
       text: Reference
       href: reference/index.html
+    news:
+      text: News
+      href: news/index.html
     articles:
       text: Vignettes
       menu:
