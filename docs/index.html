@@ -166,6 +166,23 @@
 <span class="fu"><a href="reference/print_preprocessing.html">print_preprocessing</a></span>(<span class="no">mysa</span>, <span class="kw">format</span> <span class="kw">=</span> <span class="st">"latex"</span>)
 <span class="fu"><a href="reference/print_decomposition.html">print_decomposition</a></span>(<span class="no">mysa</span>, <span class="kw">format</span> <span class="kw">=</span> <span class="st">"latex"</span>)
 <span class="fu"><a href="reference/print_diagnostics.html">print_diagnostics</a></span>(<span class="no">mysa</span>, <span class="kw">format</span> <span class="kw">=</span> <span class="st">"latex"</span>)</pre></div>
+<p>A R Markdown can also directly be created and render with the <code>create_rmd</code> function. It can take as argument a <code>SA</code>, <code>jSA</code>, <code>sa_item</code>, <code>multiprocessing</code> (all the models of the <code>multiprocessing</code> are printed) or workspace object (all the models of all the <code>multiprocessing</code> of the <code>workspace</code> are printed). For example:</p>
+<div class="sourceCode" id="cb3"><pre class="r"><span class="no">sa_ts</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/RJDemetra/man/tramoseats.html">tramoseats</a></span>(<span class="no">ipi_c_eu</span>[, <span class="st">"FR"</span>])
+<span class="no">wk</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/RJDemetra/man/new_workspace.html">new_workspace</a></span>()
+<span class="fu"><a href="https://rdrr.io/pkg/RJDemetra/man/new_workspace.html">new_multiprocessing</a></span>(<span class="no">wk</span>, <span class="st">"sa1"</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/RJDemetra/man/add_sa_item.html">add_sa_item</a></span>(<span class="no">wk</span>, <span class="st">"sa1"</span>, <span class="no">mysa</span>, <span class="st">"X13"</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/RJDemetra/man/add_sa_item.html">add_sa_item</a></span>(<span class="no">wk</span>, <span class="st">"sa1"</span>, <span class="no">sa_ts</span>, <span class="st">"TramoSeats"</span>)
+<span class="co"># It's important to compute the workspace to be able to import the models</span>
+<span class="fu"><a href="https://rdrr.io/pkg/RJDemetra/man/compute.html">compute</a></span>(<span class="no">wk</span>)
+
+<span class="no">output_file</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span>(<span class="kw">fileext</span> <span class="kw">=</span> <span class="st">".Rmd"</span>)
+<span class="fu"><a href="reference/create_rmd.html">create_rmd</a></span>(<span class="no">wk</span>, <span class="no">output_file</span>,
+           <span class="kw">output_format</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"pdf_document"</span>, <span class="st">"html_document"</span>),
+           <span class="kw">output_options</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">toc</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
+                                 <span class="kw">number_sections</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
+<span class="co"># To open the file:</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html">browseURL</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span>(<span class="st">".Rmd"</span>,<span class="st">".pdf"</span>, <span class="no">output_file</span>, <span class="kw">fixed</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
+<span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html">browseURL</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span>(<span class="st">".Rmd"</span>,<span class="st">".html"</span>, <span class="no">output_file</span>, <span class="kw">fixed</span> <span class="kw">=</span> <span class="fl">TRUE</span>))</pre></div>
 <div id="latex-output" class="section level3">
 <h3 class="hasAnchor">
 <a href="#latex-output" class="anchor"></a>LaTeX output</h3>

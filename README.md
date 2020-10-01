@@ -58,6 +58,31 @@ print_decomposition(mysa, format = "latex")
 print_diagnostics(mysa, format = "latex")
 ```
 
+A R Markdown can also directly be created and render with the
+`create_rmd` function. It can take as argument a `SA`, `jSA`, `sa_item`,
+`multiprocessing` (all the models of the `multiprocessing` are printed)
+or workspace object (all the models of all the `multiprocessing` of the
+`workspace` are printed). For example:
+
+``` r
+sa_ts <- tramoseats(ipi_c_eu[, "FR"])
+wk <- new_workspace()
+new_multiprocessing(wk, "sa1")
+add_sa_item(wk, "sa1", mysa, "X13")
+add_sa_item(wk, "sa1", sa_ts, "TramoSeats")
+# It's important to compute the workspace to be able to import the models
+compute(wk)
+
+output_file <- tempfile(fileext = ".Rmd")
+create_rmd(wk, output_file, 
+           output_format = c("pdf_document", "html_document"),
+           output_options = list(toc = TRUE,
+                                 number_sections = TRUE))
+# To open the file:
+browseURL(sub(".Rmd",".pdf", output_file, fixed = TRUE))
+browseURL(sub(".Rmd",".html", output_file, fixed = TRUE))
+```
+
 ### LaTeX output
 
 [<img src="https://user-images.githubusercontent.com/24825189/85861799-2ecd5080-b7c1-11ea-9ea0-70ffea5248b3.png" alt="LaTeX output" width="500" />](https://aqlt.github.io/rjdmarkdown/articles/rjdmarkdown-pdf.pdf)
