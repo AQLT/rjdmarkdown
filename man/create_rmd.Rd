@@ -129,7 +129,7 @@ jsa_x13 <- RJDemetra::jx13(ipi)
 output_file <- tempfile(fileext = ".Rmd")
 create_rmd(jsa_x13, output_file, output_format = "pdf_document")
 # To directly open the pdf:
-browseURL(sub(".Rmd",".pdf", output_file, fixed= TRUE))
+browseURL(sub(".Rmd",".pdf", output_file, fixed = TRUE))
 
 
 # To create a pdf from a workspace:
@@ -149,7 +149,7 @@ create_rmd(wk, output_file,
            output_options = list(toc = TRUE,
                                  number_sections = TRUE))
 # To open the file:
-browseURL(sub(".Rmd",".pdf", output_file, fixed= TRUE))
-browseURL(sub(".Rmd",".html", output_file, fixed= TRUE))
+browseURL(sub(".Rmd",".pdf", output_file, fixed = TRUE))
+browseURL(sub(".Rmd",".html", output_file, fixed = TRUE))
 }
 }
