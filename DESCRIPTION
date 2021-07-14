@@ -1,7 +1,7 @@
 Package: rjdmarkdown
 Type: Package
 Title: 'rmarkdown' Extension for Formatted 'RJDemetra' Outputs
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
   person("Alain", "Quartier-la-Tente", role = c("aut", "cre"),
                  email = "alain.quartier@yahoo.fr",
@@ -17,7 +17,7 @@ Imports:
     magrittr
 License: EUPL
 URL: https://github.com/AQLT/rjdmarkdown
-LazyData: TRUE
+LazyData: FALSE
 BugReports: https://github.com/AQLT/rjdmarkdown/issues
 SystemRequirements: Java SE 8 or higher
 Encoding: UTF-8
