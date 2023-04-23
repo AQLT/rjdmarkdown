@@ -8,7 +8,7 @@ Authors@R: c(
                  comment = c(ORCID = "0000-0001-7890-3857")))
 Description: Functions to have nice 'rmarkdown' outputs of the 
   seasonal and trading day adjustment models made with 'RJDemetra'.
-SystemRequirements: Java SE between 8 and 15.
+SystemRequirements: Java (>= 8)
 Depends:
     R (>= 3.1.1),
     RJDemetra

@@ -1,8 +1,8 @@
 # rjdmarkdown 0.2.1
 
-* Java version between 8 and 15 is required (RJDemetra compatibility).
-
 * `rjdmarkdown` now depends on `RJDemetra`.
+
+* SystemRequirements update for CRAN policies.
 
 # rjdmarkdown 0.2.0
 
