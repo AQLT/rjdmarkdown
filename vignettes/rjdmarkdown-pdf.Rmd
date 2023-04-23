@@ -9,6 +9,9 @@ header-includes:
    - \usepackage{array}
    - \usepackage{multirow}
    - \floatplacement{figure}{H}
+pkgdown:
+  as_is: true
+  extension: pdf
 vignette: >
   %\VignetteIndexEntry{rjdmarkdown with PDF output}
   %\VignetteEngine{knitr::rmarkdown}
