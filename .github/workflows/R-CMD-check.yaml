@@ -31,7 +31,7 @@ jobs:
           #- {os: ubuntu-20.04, r: 'release', java: 16,os-name: ubuntu}
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - uses: actions/setup-java@v1
         with:
@@ -87,7 +87,7 @@ jobs:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
         run: |
           options(crayon.enabled = TRUE)
-          rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran", "--no-multiarch", "--no-vignettes"), error_on = "warning", check_dir = "check")
+          rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran", "--no-multiarch", "--no-build-vignettes", "--ignore-vignettes"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
 
       - name: Upload check results
