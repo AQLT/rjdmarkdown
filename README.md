@@ -3,9 +3,8 @@
 
 # rjdmarkdown
 
-[![Travis Build
-Status](https://img.shields.io/travis/AQLT/rjdmarkdown.svg?logo=travis)](https://travis-ci.org/AQLT/rjdmarkdown)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/rjdmarkdown)](https://cran.r-project.org/package=rjdmarkdown)
+[![R-CMD-check](https://github.com/AQLT/rjdmarkdown/workflows/R-CMD-check/badge.svg)](https://github.com/AQLT/rjdmarkdown/actions)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/rjdmarkdown)](https://cran.r-project.org/package=rjdmarkdown)
 [![CRAN last
 release](http://www.r-pkg.org/badges/last-release/rjdmarkdown)](https://cran.r-project.org/package=rjdmarkdown)
 [![CRAN monthly
@@ -36,10 +35,10 @@ devtools::install_github("AQLT/rjdmarkdown")
 
 The functions developped are:
 
-  - `print_preprocessing()` for the pre-processing model;  
-  - `print_decomposition()` for the decomposition;  
-  - `print_diagnostics()` to print diagnostics tests on the quality of
-    the seasonal adjustment.
+- `print_preprocessing()` for the pre-processing model;  
+- `print_decomposition()` for the decomposition;  
+- `print_diagnostics()` to print diagnostics tests on the quality of the
+  seasonal adjustment.
 
 The available outputs are
 [LaTeX](https://aqlt.github.io/rjdmarkdown/articles/rjdmarkdown-pdf.pdf)
