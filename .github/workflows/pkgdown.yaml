@@ -20,7 +20,9 @@ jobs:
         with:
           r-version: oldrel
 
-      - uses: r-lib/actions/setup-pandoc@v1
+      - uses: r-lib/actions/setup-pandoc@v2
+      
+      - uses: r-lib/actions/setup-tinytex@v2
 
       - name: Query dependencies
         run: |
