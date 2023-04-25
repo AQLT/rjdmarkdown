@@ -52,7 +52,9 @@ jobs:
         run: version
         shell: Rscript {0}
 
-      - uses: r-lib/actions/setup-pandoc@v1
+      - uses: r-lib/actions/setup-pandoc@v2
+      
+      - uses: r-lib/actions/setup-tinytex@v2
 
       - name: Query dependencies
         run: |
@@ -87,7 +89,7 @@ jobs:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
         run: |
           options(crayon.enabled = TRUE)
-          rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran", "--no-multiarch", "--no-build-vignettes", "--ignore-vignettes"), build_args = c("--no-build-vignettes", "--ignore-vignettes"), error_on = "warning", check_dir = "check")
+          rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran", "--no-multiarch"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
 
       - name: Upload check results
