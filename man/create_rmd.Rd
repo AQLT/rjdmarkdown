@@ -7,7 +7,7 @@
 \alias{create_rmd.workspace}
 \alias{create_rmd.multiprocessing}
 \alias{create_rmd.sa_item}
-\title{Create and compile 'rmarkdown' file}
+\title{Create and render 'rmarkdown' file}
 \usage{
 create_rmd(
   x,
@@ -100,13 +100,16 @@ a pdf output, \code{"html_document"} for a HTML output.
 See \link[rmarkdown]{render} for more details.}
 
 \item{preprocessing_fun}{the function used to print the preprocessing. 
-\link{print_preprocessing} by default.}
+\link{print_preprocessing} by default. 
+If \code{preprocessing_fun = NULL} the function is not used.}
 
 \item{decomposition_fun}{the function used to print the decomposition 
-\link{print_decomposition} by default.}
+\link{print_decomposition} by default.
+If \code{decomposition_fun = NULL} the function is not used.}
 
 \item{diagnostics_fun}{the function used to print the diagnostics 
-\link{print_diagnostics} by default.}
+\link{print_diagnostics} by default.
+If \code{diagnostics_fun = NULL} the function is not used.}
 
 \item{title}{the title of the R Markdown document.}
 
