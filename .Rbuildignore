@@ -10,3 +10,4 @@
 ^doc$
 cran-comments.md
 ^\.github$
+^reconf.sh$
