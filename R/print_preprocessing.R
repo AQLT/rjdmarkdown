@@ -421,7 +421,7 @@ print_preprocessing_html <- function(x, signif.stars = TRUE,
         }
         table <- kable(regression_table, format = "html", digits = digits,
                        escape = FALSE,
-                       caption = "Regression coefficientss",
+                       caption = "Regression coefficients",
                        format.args = list(decimal.mark = decimal.mark),
                        align = "c") %>% 
           kable_styling()
@@ -455,80 +455,3 @@ format_table_coefficient <- function(x, format = "latex"){
   }
   return(invisible(x))
 }
-# 
-# cat("y = regression model + arima ",gsub("c","",deparse(as.numeric(x$arma_orders))),sep="")
-# cat("\n\n")
-# cat("Model:",x$results_spec[1,"Model"],sep=" ")
-# cat("\n")
-# cat("Estimation span:",x$results_spec[1,"T.span"],sep=" ")
-# cat("\n")
-# cat("Log-transformation:",if(x$results_spec[1,"Log transformation"]) {"yes"} else {"no"},sep=" ")
-# cat("\n")
-# cat("Regression model:",if(x$results_spec[1,"Mean"]) {"mean"} else {"no mean"},sep=" ")
-# }
-# cat(if(x$results_spec[1,"Leap year"]) {", leap year effect"} else {", no leap year effect"},sep="")
-# cat(if(x$results_spec[1,"Easter"]) {", Easter effect"} else {", no Easter effect"},sep="")
-# if(x$results_spec[1,"Outliers"]==0) {cat(", no outliers")} else {cat(", outliers(",x$results_spec[1,"Outliers"],")",sep="")}
-# cat("\n\n")
-# cat("Coefficients:")
-# 
-# 
-# if (!is.null(x$coefficients$arima)){
-#   cat("\n")
-#   cat("ARIMA:","\n")
-#   printCoefmat(x$coefficients$arima, digits = digits, signif.stars = signif.stars,
-#                na.print = "NA", ...)
-# }
-# if (!is.null(x$coefficients$regression)){
-#   cat("\n")
-#   cat("Regression model:","\n")
-#   
-#   printCoefmat(x$coefficients$regression, digits = digits, signif.stars = signif.stars,
-#                na.print = "NA", ...)
-# }
-# if (!is.null(x$coefficients$fixed_out)){
-#   printCoefmat(x$coefficients$fixed_out[, -ncol(x$coefficients$fixed_out), drop = FALSE],
-#                digits = digits, P.values= FALSE, na.print = "NA")
-# }
-# if (!is.null(x$coefficients$fixed_var)){
-#   cat("\n")
-#   cat("Fixed other regression effects:","\n")
-#   printCoefmat(x$coefficients$fixed_var[,-ncol(x$coefficients$fixed_var), drop = FALSE],
-#                digits = digits, P.values= FALSE, na.print = "NA", ...)
-# }
-# 
-# loglik <- x$loglik
-# class(result) <- "summary.regarima"
-# cat("\n\n")
-# cat("Residual standard error:",
-#     ,
-#     "on",
-#     loglik["np",], "degrees of freedom", sep = " ")
-# cat("\n")
-# cat("Log likelihood = ", formatC(loglik["logvalue",], digits = digits),
-#     ", aic = ",formatC(loglik["aic", ], digits = digits),
-#     ", aicc = ", formatC(loglik["aicc", ], digits = digits),
-#     ", bic(corrected for length) = ", formatC(loglik["bicc", ],digits = digits),
-#     sep = "")
-# cat("\n\n")
-# invisible(x)
-# 
-# digits <- 4
-# decimal.mark = getOption("OutDec")
-# myseries <- ipi_c_eu[, "FR"]
-# 
-# mysa <- x13(myseries, spec = x13_spec(usrdef.outliersEnabled = TRUE,
-#                                       usrdef.outliersType = c("LS","AO"),
-#                                       usrdef.outliersDate = c("2008-10-01", "2002-01-01")
-#                                       ,
-#                                       usrdef.outliersCoef = c(36, 14),
-#                                       transform.function = "None", automdl.enabled =FALSE,
-#                                       arima.coefEnabled = TRUE,
-#                                       arima.p = 1, arima.q = 1, arima.bp = 0, arima.bq = 1,
-#                                       arima.coef = c(-0.8, -0.6, 0),
-#                                       arima.coefType = c(rep("Fixed", 2), "Undefined")))
-# x <- mysa$regarima
-# summary_x <- summary(x)
-# 
-# class(mysa)
-# summary.regarima(x)
