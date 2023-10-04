@@ -18,7 +18,6 @@ Imports:
     magrittr
 License: EUPL
 URL: https://github.com/AQLT/rjdmarkdown
-LazyData: FALSE
 BugReports: https://github.com/AQLT/rjdmarkdown/issues
 Encoding: UTF-8
 RoxygenNote: 7.2.3
