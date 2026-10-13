@@ -259,7 +259,7 @@ print_preprocessing_latex <- function(x, signif.stars = TRUE,
           regression_table <- add_stars(regression_table)
         }
         table <- kable(regression_table, format = "latex", digits = digits,
-                       escape = "FALSE",
+                       escape = FALSE,
                        caption = "Regression coefficientss",
                        format.args = list(decimal.mark = decimal.mark),
                        booktabs = booktabs,
