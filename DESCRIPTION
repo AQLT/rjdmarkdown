@@ -20,8 +20,8 @@ License: EUPL
 URL: https://github.com/AQLT/rjdmarkdown
 BugReports: https://github.com/AQLT/rjdmarkdown/issues
 Encoding: UTF-8
-RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 Suggests: 
     rmarkdown,
     ggdemetra
+Config/roxygen2/version: 8.1.0

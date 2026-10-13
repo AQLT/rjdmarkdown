@@ -20,13 +20,19 @@ export(create_rmd)
 export(print_decomposition)
 export(print_diagnostics)
 export(print_preprocessing)
-importFrom(RJDemetra,get_name)
-importFrom(RJDemetra,get_object)
+importFrom(RJDemetra,
+  get_name,
+  get_object
+)
 importFrom(graphics,plot)
-importFrom(kableExtra,column_spec)
-importFrom(kableExtra,footnote)
-importFrom(kableExtra,kable_styling)
+importFrom(kableExtra,
+  column_spec,
+  footnote,
+  kable_styling
+)
 importFrom(knitr,kable)
 importFrom(magrittr,"%>%")
-importFrom(stats,printCoefmat)
-importFrom(stats,time)
+importFrom(stats,
+  printCoefmat,
+  time
+)
