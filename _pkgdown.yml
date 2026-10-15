@@ -40,10 +40,10 @@ navbar:
       - text: JDemetra+ documentation
         href: https://jdemetra-new-documentation.netlify.app/
     rpackages:
-      text: Around JDemetra+ and R
+      text: Around JDemetra+ (V2) and R
       menu:
       - text: RJDemetra
-        href: https://github.com/jdemetra/rjdemetra
+        href: https://github.com/rjdverse/rjdemetra
       - text: ggdemetra
         href: https://github.com/AQLT/ggdemetra
       - text: rjwsacruncher
