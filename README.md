@@ -5,6 +5,8 @@
 
 [![R-CMD-check](https://github.com/AQLT/rjdmarkdown/workflows/R-CMD-check/badge.svg)](https://github.com/AQLT/rjdmarkdown/actions)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/rjdmarkdown)](https://cran.r-project.org/package=rjdmarkdown)
+[![R universe
+version](https://aqlt.r-universe.dev/rjdmarkdown/badges/version)](https://aqlt.r-universe.dev/rjdmarkdown)
 [![CRAN last
 release](https://www.r-pkg.org/badges/last-release/rjdmarkdown)](https://cran.r-project.org/package=rjdmarkdown)
 [![CRAN monthly
@@ -15,7 +17,7 @@ downloads](https://cranlogs.r-pkg.org/badges/grand-total/rjdmarkdown?color=light
 ## Overview
 
 rjdmarkdown gives a set of functions to print nicely your models created
-by [RJDemetra](https://github.com/jdemetra/rjdemetra).
+by [RJDemetra](https://github.com/rjdverse/rjdemetra).
 
 ## Installation
 

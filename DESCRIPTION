@@ -1,9 +1,9 @@
 Package: rjdmarkdown
 Type: Package
 Title: 'rmarkdown' Extension for Formatted 'RJDemetra' Outputs
-Version: 0.2.3
+Version: 0.2.4
 Authors@R: c(
-  person("Alain", "Quartier-la-Tente", role = c("aut", "cre"),
+  person("Alain", "Quartier-la-Tente", role = c("aut", "cre", "cph"),
                  email = "alain.quartier@yahoo.fr",
                  comment = c(ORCID = "0000-0001-7890-3857")))
 Description: Functions to have nice 'rmarkdown' outputs of the 
@@ -17,7 +17,7 @@ Imports:
     kableExtra,
     magrittr
 License: EUPL
-URL: https://github.com/AQLT/rjdmarkdown
+URL: https://github.com/AQLT/rjdmarkdown, https://aqlt.github.io/rjdmarkdown/
 BugReports: https://github.com/AQLT/rjdmarkdown/issues
 Encoding: UTF-8
 VignetteBuilder: knitr

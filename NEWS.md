@@ -1,6 +1,8 @@
+# rjdmarkdown 0.2.4
+
 # rjdmarkdown 0.2.3
 
-* correction of `print_preprocessing()` (`"FALSE"` replace by `FALSE`, #4).
+* correction of `print_preprocessing()` (`"FALSE"` replaced by `FALSE`, #4).
 
 
 # rjdmarkdown 0.2.2
